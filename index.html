@@ -1,31 +1,345 @@
 <!DOCTYPE html>
 <html lang="ca">
 <head>
+    <!-- Codificació de caràcters que permet accents i caràcters especials -->
     <meta charset="UTF-8">
+    
+    <!-- Perquè la pàgina s'adapti a l'amplada del dispositiu corresponent (responsivitat) -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RAS Football</title>
+
+    <!-- Títol de la pàgina: important per SEO -->
+    <title>RAS Football | Història del futbol, jugadors i entrenadors</title>
+    
+    <!-- Descripció de la web pels cercadors -->
+    <meta 
+      name="description"
+      content="Descobreix la història del futbol, jugadors i entrenadors destacats, rànquings i debats de la comunitat a RAS Football."
+    >
+
+    <!-- Autor del projecte -->
+    <meta name="author" content="Rasen Mediñà i Masdeu">
+
+    <!-- Idioma i indexació: l'idioma principal ja s'indica a html lang="ca" -->
+    <meta name="robots" content="index, follow">
+
+    <!-- Full d'estils generat per Tailwind CSS -->
     <link rel="stylesheet" href="./css/output.css">
 </head>
+
+<!-- El body amb un color de fons blanc -->
 <body class="bg-slate-100">
 
-  <header class="bg-[#123D68] p-6 text-white">
-    <h1 class="text-3xl font-bold">RAS Football</h1>
+  <!-- Capçalera principal amb un fons blau fosc personalitzat [#123D68], text en blanc i padding 6 (24px) -->
+  <header class="bg-[#123D68]  text-white p-6">
+    <!-- Contenidor que organitza els elements en horitzontal: centrem verticalment, repartim espai entre elements, separació de 6 entre elements -->
+    <!-- En mòbil els elements poden ocupar diverses files (flex-wrap permet que els elements passin a una altra fila quan no hi caben) -->
+    <!-- En pantalles mitjanes o grans mantenim una sola fila -->
+    <div class="flex flex-wrap md:flex-nowrap items-center justify-between gap-6">
+      
+      <!-- Logotip de RAS Football que enllaça amb la vista 'Home': afegim espai interior horitzontal i vertical, arrodonim cantonades -->
+      <!-- aria-label proporciona un nom accessible que pot anunciar el lector de pantalla --> 
+      <!-- Posem un fons clar perquè destaqui el logotip, cantonades arrodonides (xl), 16px de pàdding horitzontal (px-4), 8 píxels de padding vertical (py-2) -->
+      <a 
+        href="index.html" 
+        aria-label="RAS Football - Pàgina d'inici"
+        class="bg-slate-100 rounded-xl px-4 py-2">
+            
+      <!-- Imatge del logotip: establim un amplada de 128 píxels (w-32) i calculem automàticament l'alçada (h-auto) -->
+      <img
+        src="./assets/images/logo.svg"
+        alt="Logotip de RAS Football"
+        class="w-32 h-auto"
+            >
+      </a>
+
+      <!-- Cercador visual: ocupa l'amplada disponible, fins a un límit -->
+      <!-- aria-label proporciona un nom accessible que pot anunciar el lector de pantalla -->
+      <!-- Posem un fons clar, text blau fosc,  padding horitzontal (px-6), padding vertical (py-3), màxima amplitud, cantonades arrodonides -->
+      <input
+        type="search"
+        placeholder="Buscar jugador o entrenador..."
+        aria-label="Buscar jugador o entrenador"
+        class="bg-slate-100 text-[#123D68] px-6 py-3 w-full max-w-md rounded-full"
+      >
+
+      <!-- Botó que enllaçarà amb la vista de login: el botó s'enfosqueix quin hi passem el ratolí -->
+      <!-- Posem un fons clar, text blau fosc, en negreta, padding horitzontal (px-6), padding vertical (py-3), cantonades arrodonides -->
+      <a href="login.html"
+        class="bg-slate-100 hover:bg-slate-200 text-[#123D68] font-bold px-6 py-3 rounded-full">
+          INICIAR SESSIÓ
+      </a>
+    </div>
   </header>
 
-  <main class="mx-auto max-w-5xl p-8">
-    <h2 class="mb-4 text-2xl font-bold text-[#123D68]">
-      Benvinguts a RAS Football
-    </h2>
+  <!-- Menú de navegació principal -->
+  <!-- Afegim 12 píxels de marge superior (mt-3) -->
+  <nav 
+    aria-label="Navegació principal"
+    class="bg-[#123D68] text-white mt-3"> 
 
-    <p class="text-slate-700">
-      Història, jugadors, entrenadors i rànquings de futbol.
-    </p>
+    <!--
+      flex: distribueix els enllaços en una fila
+      flex-wrap: permet passar a una altra línia si falta espai
+      justify-center: centra els elements horitzontalment
+      gap-6: separació entre enllaços
+      p-4: espai interior de 16 píxels
+    -->
+    <div class="flex flex-wrap justify-center gap-6 p-4 font-bold text-sm">
+        
+      <!-- Enllaç a la pàgina actual -->
+      <a href="index.html"
+        aria-current="page"
+        class="hover:underline">
+        INICI
+      </a>
 
-    <a href="login.html"
-       class="mt-6 inline-block rounded-lg bg-blue-600 px-6 py-3 text-white hover:bg-blue-700">
-      Iniciar sessió
-    </a>
+      <!-- Enllaços a les seccions de la mateixa Home -->
+      <!-- (TODO: SUBSTITUIR ELS ENLLAÇOS PER LES PÀGINES CORRESPONENTS) -->
+      <a href="#jugadors" class="hover:underline">
+        JUGADORS
+      </a>
+
+      <!-- (TODO: SUBSTITUIR ELS ENLLAÇOS PER LES PÀGINES CORRESPONENTS) -->
+      <a href="#entrenadors" class="hover:underline">
+        ENTRENADORS
+      </a>
+
+      <!-- (TODO: SUBSTITUIR ELS ENLLAÇOS PER LES PÀGINES CORRESPONENTS) -->
+      <a href="index.html" class="hover:underline">
+        RÀNKINGS
+      </a>
+
+      <!-- (TODO: SUBSTITUIR ELS ENLLAÇOS PER LES PÀGINES CORRESPONENTS) -->
+      <a href="#forum" class="hover:underline">
+        FÒRUM
+      </a>
+
+      <a href="#sobre-nosaltres" class="hover:underline">
+        SOBRE NOSALTRES
+      </a>
+    </div>
+  </nav>
+
+<!-- Contingut principal de la vista 'Home' -->
+<main class="max-w-7xl mx-auto px-4 py-6">
+
+    <!--
+        Grid principal:
+        - En mòbil: una sola columna (grid-cols-1)
+        - En pantalles grans (lg): tres columnes (lg:grid-cols-3)
+        - El contingut principal ocuparà dues columnes.
+        - El fòrum ocuparà una columna.
+        - Les dues columnes comencen a la mateixa altura
+    -->
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 items-start">
+
+        <!-- Columna esquerra: contingut, jugadors i entrenadors -->
+        <div class="lg:col-span-2 space-y-6">
+
+            <!-- Secció 1: CONTINGUT DESTACAT -->
+            <section class="bg-white rounded-lg p-6">
+
+                <h1 class="text-2xl font-bold mb-4">
+                    CONTINGUT DESTACAT
+                </h1>
+
+                <p class="text-slate-700">
+                    Descobreix els grans protagonistes de la història del futbol i de l'actualitat.
+                </p>
+            </section>
+
+            <!-- Secció 2: JUGADORS DESTACATS -->
+            <!-- id="jugadors" permet arribar-hi des del menú -->
+            <section id="jugadors" class="bg-white rounded-lg p-6">
+
+                <h2 class="text-2xl font-bold mb-4">
+                    JUGADORS DESTACATS
+                </h2>
+
+                <!--
+                    grid: distribució en quadrícula
+                    grid-cols-1: una columna en mòbil
+                    md:grid-cols-3: tres columnes a partir de md
+                    gap-4: separació entre targetes
+                -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+
+                    <!-- Targeta del jugador 1 -->
+                    <article class="bg-[#879DAA] rounded-xl p-6 text-center">
+
+                        <h3 class="font-bold mb-2">
+                            JUGADOR 1
+                        </h3>
+
+                        <p class="text-sm">
+                            Fitxa del jugador
+                        </p>
+                    </article>
+
+                    <!-- Targeta del jugador 2 -->
+                    <article class="bg-[#879DAA] rounded-xl p-6 text-center">
+
+                        <h3 class="font-bold mb-2">
+                            JUGADOR 2
+                        </h3>
+
+                        <p class="text-sm">
+                            Fitxa del jugador
+                        </p>
+                    </article>
+
+                    <!-- Targeta del jugador 3 -->
+                    <article class="bg-[#879DAA] rounded-xl p-6 text-center">
+
+                        <h3 class="font-bold mb-2">
+                            JUGADOR 3
+                        </h3>
+
+                        <p class="text-sm">
+                            Fitxa del jugador
+                        </p>
+                    </article>
+                </div>
+            </section>
+
+            <!-- Secció 3: ENTRENADORS DESTACATS -->
+            <!-- id="entrenadors" permet arribar-hi des del menú -->
+            <section id="entrenadors" class="bg-white rounded-lg p-6">
+
+                <h2 class="text-2xl font-bold mb-4">
+                    ENTRENADORS DESTACATS
+                </h2>
+
+                <!--
+                    grid: distribució en quadrícula
+                    grid-cols-1: una columna en mòbil
+                    md:grid-cols-3: tres columnes a partir de md
+                    gap-4: separació entre targetes
+                -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+
+                    <!-- Entrenador 1 -->
+                    <article class="bg-[#879DAA] rounded-xl p-6 text-center">
+                        <h3 class="font-bold mb-2">
+                            ENTRENADOR 1
+                        </h3>
+                        <p class="text-sm">
+                            Fitxa de l'entrenador
+                        </p>
+                    </article>
+
+                    <!-- Entrenador 2 -->
+                    <article class="bg-[#879DAA] rounded-xl p-6 text-center">
+                        <h3 class="font-bold mb-2">
+                            ENTRENADOR 2
+                        </h3>
+                        <p class="text-sm">
+                            Fitxa de l'entrenador
+                        </p>
+                    </article>
+
+                    <!-- Entrenador 3 -->
+                    <article class="bg-[#879DAA] rounded-xl p-6 text-center">
+                        <h3 class="font-bold mb-2">
+                            ENTRENADOR 3
+                        </h3>
+                        <p class="text-sm">
+                            Fitxa de l'entrenador
+                        </p>
+                    </article>
+                </div>
+            </section>
+        </div>
+
+        <!-- Columna dreta: FÒRUM -->
+        <!-- id="forum" permet arribar-hi des del menú -->
+        <aside id="forum" class="bg-white rounded-lg p-6">
+
+            <h2 class="text-2xl font-bold text-center mb-6">
+                FÒRUM / ACTIVITAT RECENT
+            </h2>
+
+            <!-- Llista de debats recents -->
+            <div class="space-y-4">
+
+                <!-- Debat 1 -->
+                <article class="bg-[#879DAA] rounded-xl p-6">
+                    <h3 class="font-bold text-center mb-2">
+                        DEBAT 1
+                    </h3>
+                    <p class="text-sm text-center">
+                        Qui és el millor jugador de la història?
+                    </p>
+                </article>
+
+                <!-- Debat 2 -->
+                <article class="bg-[#879DAA] rounded-xl p-6">
+                    <h3 class="font-bold text-center mb-2">
+                        DEBAT 2
+                    </h3>
+                    <p class="text-sm text-center">
+                        Els millors entrenadors del futbol actual.
+                    </p>
+                </article>
+
+                <!-- Debat 3 -->
+                <article class="bg-[#879DAA] rounded-xl p-6">
+                    <h3 class="font-bold text-center mb-2">
+                        DEBAT 3
+                    </h3>
+                    <p class="text-sm text-center">
+                        Ultimate Team de la història del futbol.
+                    </p>
+                </article>
+            </div>
+        </aside>
+    </div>
   </main>
 
+  <!-- Peu de pàgina -->
+  <!-- id="sobre-nosaltres" permet arribar-hi des del menú -->
+  <footer id="sobre-nosaltres" class="bg-[#123D68] text-white mt-8">
+
+    <!--
+        max-w-7xl: limita l'amplada del contingut
+        mx-auto: centra el contenidor
+        px-6 py-8: espai interior
+    -->
+    <div class="max-w-7xl mx-auto px-6 py-8">
+
+        <!-- Distribució dels elements del footer -->
+        <div class="flex flex-col md:flex-row justify-between items-center gap-4 text-center">
+
+            <!-- Identitat i autoria -->
+            <div>
+                <p class="font-bold">RAS Football</p>
+                <p class="text-xs">
+                    Projecte personal de Rasen Mediñà i Masdeu
+                </p>
+            </div>
+
+            <!-- Navegació complementària -->
+            <div class="flex flex-wrap justify-center gap-6 text-sm">
+
+                <a href="index.html" class="hover:underline">
+                    Inici
+                </a>
+
+                <a href="mailto:r.medina@sapalomera.cat" class="hover:underline">
+                    Contacte
+                </a>
+
+                <a href="#sobre-nosaltres" class="hover:underline">
+                    Sobre nosaltres
+                </a>
+            </div>
+
+            <!-- Copyright -->
+            <p class="text-sm">
+                &copy; 2026 RAS Football
+            </p>
+        </div>
+    </div>
+  </footer>
 </body>
 </html>

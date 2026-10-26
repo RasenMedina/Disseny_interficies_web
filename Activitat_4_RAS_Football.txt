@@ -1,0 +1,9 @@
+Activitat 4 – Codi del wireframe
+
+Alumne: Rasen Mediñà i Masdeu
+Assignatura: M09 – Disseny d'interfícies web
+Projecte: RAS Football
+Repositori GitHub: https://github.com/RasenMedina/Disseny_interficies_web
+Prototip Figma: https://www.figma.com/design/4kpCma7pdHpVRL4srsCxFT/Rasen_projecteFutbol
+
+Vistes: Home i Login/Register 
