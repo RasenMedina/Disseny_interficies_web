@@ -9,6 +9,13 @@
 
     <!-- Títol de la pàgina: important per SEO -->
     <title>Iniciar sessió o registrar-se | RAS Football</title>
+
+    <!-- Favicon de RAS Football: icona que apareix a la pestanya del navegador -->
+    <link
+        rel="icon"
+        type="image/svg+xml"
+        href="./assets/images/logo.svg"
+    >
     
     <!-- Descripció de la web pels cercadors -->
     <meta 
@@ -66,7 +73,8 @@
             <a 
                 href="index.html" 
                 aria-label="RAS Football - Pàgina d'inici"
-                class="bg-slate-100 rounded-xl px-4 py-2">
+                class="bg-slate-100 rounded-xl px-4 py-2"
+            >
                 
                 <!-- Imatge del logotip: establim un amplada de 128 píxels (w-32) i calculem automàticament l'alçada (h-auto) -->
                 <img
@@ -92,19 +100,22 @@
                 class="bg-slate-100 text-[#123D68] px-6 py-3 w-full max-w-md rounded-full"
             >
 
-            <!-- Botó que enllaçarà amb la vista de login: el botó s'enfosqueix quan hi passem el ratolí -->
+            <!-- Botó que enllaçarà amb la vista de Home: el botó s'enfosqueix quan hi passem el ratolí -->
             <!-- Posem un fons clar, text blau fosc, en negreta, padding horitzontal (px-6), padding vertical (py-3), cantonades arrodonides -->
-            <a href="login.html"
-                class="bg-slate-100 hover:bg-slate-200 text-[#123D68] font-bold px-6 py-3 rounded-full">
-                INICIAR SESSIÓ
+            <a
+                href="index.html"
+                class="bg-slate-100 hover:bg-slate-200 text-[#123D68] font-bold px-6 py-3 rounded-full"
+            >
+                TORNAR A L'INICI
             </a>
         </div>
   </header>
 
     <!-- Contingut principal de la vista 'Login' -->
+    <!-- tabindex="-1" permet que l'enllaç de salt traslladi el focus al main. No afegeix el main a l'ordre normal del tabulador --> 
     <!-- max-w-7xl limita l'amplada, mx-auto centra el contingut -->
     <!-- px-4 i py-10 afegeixen espai interior -->
-    <main id="main" class="max-w-7xl mx-auto px-4 py-10">
+    <main id="main" tabindex="-1" class="max-w-7xl mx-auto px-4 py-10">
 
         <!-- Contenidor dels dos formularis -->
         <!-- Fons blanc per destacar sobre el gris clar del body -->
@@ -140,7 +151,7 @@
                                 for="login-email"
                                 class="block font-bold text-[#123D68] mb-2"
                             >
-                                Correu electrònic
+                                Correu electrònic *
                             </label>
 
                             <!-- <input> permet introduir dades -->
@@ -163,7 +174,7 @@
                                 for="login-password"
                                 class="block font-bold text-[#123D68] mb-2"
                             >
-                                Contrasenya
+                                Contrasenya *
                             </label>
 
                             <!-- type="password" oculta els caràcters escrits -->
@@ -235,7 +246,7 @@
                                 for="registre-usuari"
                                 class="block font-bold text-[#123D68] mb-2"
                             >
-                                Nom d'usuari
+                                Nom d'usuari *
                             </label>
 
                             <input
@@ -254,7 +265,7 @@
                                 for="registre-email"
                                 class="block font-bold text-[#123D68] mb-2"
                             >
-                                Correu electrònic
+                                Correu electrònic *
                             </label>
 
                             <!-- És obligatori (required) -->
@@ -274,7 +285,7 @@
                                 for="registre-password"
                                 class="block font-bold text-[#123D68] mb-2"
                             >
-                                Contrasenya
+                                Contrasenya *
                             </label>
 
                             <input
@@ -293,7 +304,7 @@
                                 for="registre-confirmar"
                                 class="block font-bold text-[#123D68] mb-2"
                             >
-                                Repetir contrasenya
+                                Repetir contrasenya *
                             </label>
 
                             <input
@@ -321,7 +332,7 @@
                                 for="termes"
                                 class="text-sm text-[#123D68]"
                             >
-                                Accepto els termes i condicions
+                                Accepto els termes i condicions *
                             </label>
                         </div>
 
@@ -369,11 +380,11 @@
                     <h2 class="font-bold text-base mb-3">Mapa del lloc</h2>
                     <ul class="space-y-2">
                         <li><a class="underline-offset-4 hover:underline" href="index.html">Inici</a></li>
-                        <li><a class="underline-offset-4 hover:underline" href="#jugadors">Jugadors destacats</a></li>
-                        <li><a class="underline-offset-4 hover:underline" href="#entrenadors">Entrenadors destacats</a></li>
-                        <li><a class="underline-offset-4 hover:underline" href="#ranquings">Rànquings</a></li>
-                        <li><a class="underline-offset-4 hover:underline" href="#forum">Fòrum</a></li>
-                        <li><a class="underline-offset-4 hover:underline" href="#sobre-nosaltres">Sobre nosaltres</a></li>
+                        <li><a class="underline-offset-4 hover:underline" href="index.html#jugadors">Jugadors destacats</a></li>
+                        <li><a class="underline-offset-4 hover:underline" href="index.html#entrenadors">Entrenadors destacats</a></li>
+                        <li><a class="underline-offset-4 hover:underline" href="index.html#ranquings">Rànquings</a></li>
+                        <li><a class="underline-offset-4 hover:underline" href="index.html#forum">Fòrum</a></li>
+                        <li><a class="underline-offset-4 hover:underline" href="index.html#sobre-nosaltres">Sobre nosaltres</a></li>
                         <li><span class="text-white/70" title="Vista en desenvolupament">Contacte</span></li>
                         <li><a class="underline-offset-4 hover:underline" href="login.html">Iniciar sessió / registre</a></li>
                     </ul>
