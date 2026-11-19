@@ -169,14 +169,11 @@
     <main id="main" tabindex="-1" class="max-w-7xl mx-auto px-4 py-6">
 
         <!--
-            Grid principal:
-            - En mòbil: una sola columna (grid-cols-1)
-            - En pantalles grans (lg): tres columnes (lg:grid-cols-3)
-            - El contingut principal ocuparà dues columnes.
-            - El fòrum ocuparà una columna.
-            - Les dues columnes comencen a la mateixa altura
+        En pantalles grans, les dues columnes s'estiren
+        fins a tenir la mateixa alçada.
+        En mòbil, el contingut continua apilat.
         -->
-        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 items-start">
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 items-stretch">
 
             <!-- Columna esquerra: contingut, jugadors i entrenadors -->
             <div class="lg:col-span-2 space-y-6 min-w-0">
@@ -223,21 +220,53 @@
                         <article class="bg-slate-100 border border-slate-200 rounded-xl p-4 min-w-0 flex flex-col gap-3">
 
                             <!-- Imatge de Pele -->
-                            <img class="portrait" src="https://commons.wikimedia.org/wiki/Special:FilePath/Pelé.jpg?width=640" alt="Retrat de Pelé" loading="lazy" decoding="async" width="320" height="240">
+                            <img 
+                                class="portrait"
+                                src="./assets/images/jugadors/pele.webp"
+                                alt="Pelé, llegenda del futbol"
+                                loading="lazy"
+                                decoding="async"
+                                width="320"
+                                height="240"
+                            >
 
                             <h3 class="text-xl font-bold text-[#123D68]">
                                 Pelé
                             </h3>
 
-                           <!-- <dl> associa cada etiqueta amb el seu valor, útil per als lectors de pantalla. -->
+                           <!--
+                                Llista descriptiva de Pelé.
+                                Cada dt identifica una dada i cada dd conté el seu valor.
+                                Aquesta estructura facilita la comprensió amb lectors de pantalla.
+                            -->
                             <dl class="fact-list text-sm text-slate-800"><div><dt>Naixement</dt><dd>1940</dd></div>
-                                <div><dt>Nacionalitat</dt><dd>Brasil</dd></div>
-                                <div><dt>Clubs</dt><dd>Santos FC · New York Cosmos</dd></div>
-                                <div><dt>Partits, minuts, gols i assistències</dt><dd>Dades pendents d'unificar per competició i font; no es mostren totals no comparables.</dd></div>
-                                <div><dt>Títols individuals i col·lectius</dt><dd>Vegeu el palmarès destacat; recompte total pendent de criteri uniforme.</dd></div>
-                                <div><dt>Palmarès destacat</dt><dd>3 Mundials (1958, 1962 i 1970)</dd></div>
-                                <div><dt>Rècord / fita</dt><dd>La seva marca històrica són tres Copes del Món, fita única entre els futbolistes masculins.</dd></div>
+                                <div>
+                                    <dt>Nacionalitat</dt>
+                                    <dd>Brasil</dd>
+                                </div>
+                                <div>
+                                    <dt>Clubs</dt>
+                                    <dd>Santos FC · New York Cosmos</dd>
+                                </div>
+                                <div>
+                                    <dt>Partits, minuts, gols i assistències</dt>
+                                    <dd>Dades pendents d'unificar per competició i font; no es mostren totals no comparables.</dd>
+                                </div>
+                                <div>
+                                    <dt>Títols individuals i col·lectius</dt>
+                                    <dd>Vegeu el palmarès destacat; recompte total pendent de criteri uniforme.</dd>
+                                </div>
+                                <div>
+                                    <dt>Palmarès destacat</dt>
+                                    <dd>3 Mundials (1958, 1962 i 1970)</dd>
+                                </div>
+                                <div>
+                                    <dt>Rècord / fita</dt>
+                                    <dd>La seva marca històrica són tres Copes del Món, fita única entre els futbolistes masculins.</dd>
+                                </div>
                             </dl>
+
+                            <!-- Descripció de la personalitat i l'estil de joc de Pelé. -->
                             <p class="text-sm text-slate-800 leading-relaxed">Velocitat, intuïció i una rematada extraordinària. Combinava joc associatiu amb desequilibri individual, era perillós amb tots dos peus i dominava el joc aeri. La seva creativitat va ajudar a convertir el futbol brasiler en un referent mundial.</p>
                             <p class="text-xs text-slate-600 mt-auto">Fotografia: Ricardo Stuckert / Agência Brasil · CC BY 3.0 BR. <a class="underline" href="https://commons.wikimedia.org/wiki/File:Pelé.jpg" target="_blank" rel="noopener noreferrer">Crèdits i llicència (obre una pestanya nova)</a>.</p>
                         </article>
@@ -246,21 +275,57 @@
                         <article class="bg-slate-100 border border-slate-200 rounded-xl p-4 min-w-0 flex flex-col gap-3">
 
                             <!-- Imatge de Maradona -->
-                            <img class="portrait" src="https://commons.wikimedia.org/wiki/Special:FilePath/DiegoMaradona.jpg?width=640" alt="Retrat de Diego Maradona" loading="lazy" decoding="async" width="320" height="240">
+                            <img 
+                                class="portrait"
+                                src="./assets/images/jugadors/maradona.webp"
+                                alt="Diego Armando Maradona, llegenda del futbol"
+                                loading="lazy"
+                                decoding="async"
+                                width="320"
+                                height="240"
+                            >
                             
                             <h3 class="text-xl font-bold text-[#123D68]">
                                 Diego Maradona
                             </h3>
 
-                            <!-- <dl> associa cada etiqueta amb el seu valor, útil per als lectors de pantalla. -->
-                            <dl class="fact-list text-sm text-slate-800"><div><dt>Naixement</dt><dd>1960</dd></div>
-                                <div><dt>Nacionalitat</dt><dd>Argentina</dd></div>
-                                <div><dt>Clubs</dt><dd>Argentinos Juniors · Boca Juniors · FC Barcelona · Nàpols · Sevilla · Newell's Old Boys</dd></div>
-                                <div><dt>Partits, minuts, gols i assistències</dt><dd>Dades pendents d'unificar per competició i font; no es mostren totals no comparables.</dd></div>
-                                <div><dt>Títols individuals i col·lectius</dt><dd>Vegeu el palmarès destacat; recompte total pendent de criteri uniforme.</dd></div>
-                                <div><dt>Palmarès destacat</dt><dd>Campió del món (1986)</dd></div>
-                                <div><dt>Rècord / fita</dt><dd>Va liderar l'Argentina al Mundial de 1986 i el Nàpols cap a dos títols de lliga italiana.</dd></div>
+                            <!--
+                                Llista descriptiva de Maradona.
+                                Cada dt identifica una dada i cada dd conté el seu valor.
+                                Aquesta estructura facilita la comprensió amb lectors de pantalla.
+                            -->
+                            <dl class="fact-list text-sm text-slate-800">
+                                <div>
+                                    <dt>Naixement</dt>
+                                    <dd>1960</dd>
+                                </div>
+                                <div>
+                                    <dt>Nacionalitat</dt>
+                                    <dd>Argentina</dd>
+                                </div>
+                                <div>
+                                    <dt>Clubs</dt>
+                                    <dd>Argentinos Juniors · Boca Juniors · FC Barcelona · Nàpols · Sevilla · Newell's Old Boys</dd>
+                                </div>
+                                <div>
+                                    <dt>Partits, minuts, gols i assistències</dt>
+                                    <dd>Dades pendents d'unificar per competició i font; no es mostren totals no comparables.</dd>
+                                </div>
+                                <div>
+                                    <dt>Títols individuals i col·lectius</dt>
+                                    <dd>Vegeu el palmarès destacat; recompte total pendent de criteri uniforme.</dd>
+                                </div>
+                                <div>
+                                    <dt>Palmarès destacat</dt>
+                                    <dd>Campió del món (1986)</dd>
+                                </div>
+                                <div>
+                                    <dt>Rècord / fita</dt>
+                                    <dd>Va liderar l'Argentina al Mundial de 1986 i el Nàpols cap a dos títols de lliga italiana.</dd>
+                                </div>
                             </dl>
+
+                            <!-- Descripció de la personalitat i l'estil de joc de Maradona. -->
                             <p class="text-sm text-slate-800 leading-relaxed">Esquerrà de control extraordinari, regat curt i una gran visió de joc. Interpretava els espais amb rapidesa i podia superar diversos rivals en una mateixa jugada. Va destacar per la seva personalitat competitiva i la capacitat d'assumir responsabilitats en partits decisius.</p>
                             <p class="text-xs text-slate-600 mt-auto">Fotografia: Мысякин Александр · CC BY-SA 3.0. <a class="underline" href="https://commons.wikimedia.org/wiki/File:DiegoMaradona.jpg" target="_blank" rel="noopener noreferrer">Crèdits i llicència (obre una pestanya nova)</a>.</p>
                         </article>
@@ -269,21 +334,57 @@
                         <article class="bg-slate-100 border border-slate-200 rounded-xl p-4 min-w-0 flex flex-col gap-3">
 
                             <!-- Imatge de Messi -->
-                            <img class="portrait" src="https://commons.wikimedia.org/wiki/Special:FilePath/Lionel_Messi.jpg?width=640" alt="Retrat de Lionel Messi" loading="lazy" decoding="async" width="320" height="240">
+                            <img 
+                                class="portrait"
+                                src="./assets/images/jugadors/messi.webp"
+                                alt="Leo Messi, llegenda del futbol"
+                                loading="lazy"
+                                decoding="async"
+                                width="320"
+                                height="240"
+                            >
 
                             <h3 class="text-xl font-bold text-[#123D68]">
                                 Lionel Messi
                             </h3>
 
-                            <!-- <dl> associa cada etiqueta amb el seu valor, útil per als lectors de pantalla. -->
-                             <dl class="fact-list text-sm text-slate-800"><div><dt>Naixement</dt><dd>1987</dd></div>
-                                <div><dt>Nacionalitat</dt><dd>Argentina</dd></div>
-                                <div><dt>Clubs</dt><dd>FC Barcelona · Paris Saint-Germain · Inter Miami</dd></div>
-                                <div><dt>Partits, minuts, gols i assistències</dt><dd>Dades pendents d'unificar per competició i font; no es mostren totals no comparables.</dd></div>
-                                <div><dt>Títols individuals i col·lectius</dt><dd>Vegeu el palmarès destacat; recompte total pendent de criteri uniforme.</dd></div>
-                                <div><dt>Palmarès destacat</dt><dd>Campió del món (2022) · 8 Pilotes d'Or</dd></div>
-                                <div><dt>Rècord / fita</dt><dd>Vuit Pilotes d'Or i una Copa del Món amb l'Argentina.</dd></div>
+                            <!--
+                                Llista descriptiva de Messi.
+                                Cada dt identifica una dada i cada dd conté el seu valor.
+                                Aquesta estructura facilita la comprensió amb lectors de pantalla.
+                            -->
+                             <dl class="fact-list text-sm text-slate-800">
+                                <div>
+                                    <dt>Naixement</dt>
+                                    <dd>1987</dd>
+                                </div>
+                                <div>
+                                    <dt>Nacionalitat</dt>
+                                    <dd>Argentina</dd>
+                                </div>
+                                <div>
+                                    <dt>Clubs</dt>
+                                    <dd>FC Barcelona · Paris Saint-Germain · Inter Miami</dd>
+                                </div>
+                                <div>
+                                    <dt>Partits, minuts, gols i assistències</dt>
+                                    <dd>Dades pendents d'unificar per competició i font; no es mostren totals no comparables.</dd>
+                                </div>
+                                <div>
+                                    <dt>Títols individuals i col·lectius</dt>
+                                    <dd>Vegeu el palmarès destacat; recompte total pendent de criteri uniforme.</dd>
+                                </div>
+                                <div>
+                                    <dt>Palmarès destacat</dt>
+                                    <dd>Campió del món (2022) · 8 Pilotes d'Or</dd>
+                                </div>
+                                <div>
+                                    <dt>Rècord / fita</dt>
+                                    <dd>Vuit Pilotes d'Or i una Copa del Món amb l'Argentina.</dd>
+                                </div>
                             </dl>
+
+                            <!-- Descripció de la personalitat i l'estil de joc de Messi. -->
                             <p class="text-sm text-slate-800 leading-relaxed">Un futbolista amb conducció molt enganxada al peu, canvis de ritme i una lectura excepcional del joc. És golejador i creador d'ocasions alhora. La precisió en la passada, el regat i el xut el converteixen en un dels atacants més complets de la història.</p>
                             <p class="text-xs text-slate-600 mt-auto">Fotografia: Wonker · CC BY 2.0. <a class="underline" href="https://commons.wikimedia.org/wiki/File:Lionel_Messi.jpg" target="_blank" rel="noopener noreferrer">Crèdits i llicència (obre una pestanya nova)</a>.</p>
                         </article>
@@ -305,21 +406,67 @@
                         <article class="bg-slate-100 border border-slate-200 rounded-xl p-4 min-w-0 flex flex-col gap-3">
                             
                             <!-- Imatge de Rinus Michels -->
-                            <img class="portrait" src="https://commons.wikimedia.org/wiki/Special:FilePath/Rinus_Michels_%281987%29.jpg?width=640" alt="Retrat de Rinus Michels" loading="lazy" decoding="async" width="320" height="240">
+                            <img 
+                                class="portrait"
+                                src="./assets/images/entrenadors/michels.webp"
+                                alt="Rinus Michels, entrenador llegenda del futbol"
+                                loading="lazy"
+                                decoding="async"
+                                width="320"
+                                height="240"
+                            >
                             
                             <h3 class="text-xl font-bold text-[#123D68]">
                                 Rinus Michels
                             </h3>
                             
-                            <!-- <dl> associa cada etiqueta amb el seu valor, útil per als lectors de pantalla. -->
-                            <dl class="fact-list text-sm text-slate-800"><div><dt>Naixement</dt><dd>1947</dd></div>
-                                <div><dt>Nacionalitat</dt><dd>Països Baixos</dd></div>
-                                <div><dt>Equips entrenats</dt><dd>Ajax · FC Barcelona · selecció de Catalunya (partits amistosos)</dd></div>
-                                <div><dt>Palmarès destacat</dt><dd>Copa d’Europa 1992 amb el FC Barcelona</dd></div>
-                                <div><dt>Total de títols</dt><dd>Pendent de fixar un criteri homogeni (primer equip, categories i supercopes).</dd></div>
-                                <div><dt>Rècord / fita</dt><dd>Va conduir el Barça a la seva primera Copa d’Europa i a quatre Lligues consecutives.</dd></div>
+                            <!--
+                                Llista descriptiva de Rinus Michels.
+                                Cada dt identifica una dada i cada dd conté el seu valor.
+                                Aquesta estructura facilita la comprensió amb lectors de pantalla.
+                            -->
+                            <dl class="fact-list text-sm text-slate-800">
+                                <div>
+                                    <dt>Naixement</dt>
+                                    <dd>1928</dd>
+                                </div>
+                                <div>
+                                    <dt>Nacionalitat</dt>
+                                    <dd>Països Baixos</dd>
+                                </div>
+                                <div>
+                                    <dt>Equips entrenats</dt>
+                                    <dd>
+                                        Ajax · FC Barcelona · Los Angeles Aztecs ·
+                                        1. FC Köln · Bayer Leverkusen ·
+                                        selecció dels Països Baixos
+                                    </dd>
+                                </div>
+                                <div>
+                                    <dt>Palmarès destacat</dt>
+                                    <dd>
+                                        Copa d'Europa de 1971 amb l'Ajax ·
+                                        Eurocopa de 1988 amb els Països Baixos
+                                    </dd>
+                                </div>
+                                <div>
+                                    <dt>Total de títols</dt>
+                                    <dd>
+                                        Pendent de fixar un criteri homogeni
+                                        per comptabilitzar les competicions.
+                                    </dd>
+                                </div>
+                                <div>
+                                    <dt>Rècord / fita</dt>
+                                    <dd>
+                                        Va impulsar el futbol total i va portar
+                                        els Països Baixos a guanyar l'Eurocopa de 1988.
+                                    </dd>
+                                </div>
                             </dl>
-                            <p class="text-sm text-slate-800 leading-relaxed">Entrenador imaginatiu, directe i fidel a les seves idees. Prioritzava la possessió, la creació de triangles i la superioritat numèrica. Donava protagonisme als jugadors tècnics i a l’atac. El seu llegat és central en la identitat futbolística del Barça.</p>
+
+                            <!-- Descripció de la personalitat i l'estil de joc de Michels. -->
+                            <p class="text-sm text-slate-800 leading-relaxed">Entrenador exigent, disciplinat i amb una gran visió tàctica. Va ser un dels principals impulsors del futbol total, un estil basat en la mobilitat, l'intercanvi de posicions i la pressió col·lectiva. Els seus equips combinaven una preparació física intensa amb una organització tàctica molt avançada. La seva influència va marcar generacions d'entrenadors, especialment Johan Cruyff.</p>
                             <p class="text-xs text-slate-600 mt-auto">Fotografia: Dan Uneken · CC0. <a class="underline" href="https://commons.wikimedia.org/wiki/File:Johan_Cruijff_(Cruyff).jpg" target="_blank" rel="noopener noreferrer">Crèdits i llicència (obre una pestanya nova)</a>.</p>
                         </article>
 
@@ -327,21 +474,54 @@
                         <article class="bg-slate-100 border border-slate-200 rounded-xl p-4 min-w-0 flex flex-col gap-3">
                             
                             <!-- Imatge de Cruyff -->
-                            <img class="portrait" src="https://commons.wikimedia.org/wiki/Special:FilePath/Johan_Cruijff_%28Cruyff%29.jpg?width=640" alt="Retrat de Johan Cruyff" loading="lazy" decoding="async" width="320" height="240">
+                            <img 
+                                class="portrait"
+                                src="./assets/images/entrenadors/cruyff.webp"
+                                alt="Johan Cruyff, entrenador llegenda del futbol"
+                                loading="lazy"
+                                decoding="async"
+                                width="320"
+                                height="240"
+                            >
                             
                             <h3 class="text-xl font-bold text-[#123D68]">
                                 Johan Cruyff
                             </h3>
 
-                            <!-- <dl> associa cada etiqueta amb el seu valor, útil per als lectors de pantalla. -->
-                            <dl class="fact-list text-sm text-slate-800"><div><dt>Naixement</dt><dd>1947</dd></div>
-                                <div><dt>Nacionalitat</dt><dd>Països Baixos</dd></div>
-                                <div><dt>Equips entrenats</dt><dd>Ajax · FC Barcelona · selecció de Catalunya (partits amistosos)</dd></div>
-                                <div><dt>Palmarès destacat</dt><dd>Copa d’Europa 1992 amb el FC Barcelona</dd></div>
-                                <div><dt>Total de títols</dt><dd>Pendent de fixar un criteri homogeni (primer equip, categories i supercopes).</dd></div>
-                                <div><dt>Rècord / fita</dt><dd>Va conduir el Barça a la seva primera Copa d’Europa i a quatre Lligues consecutives.</dd></div>
+                            <!--
+                                Llista descriptiva de Cruyff.
+                                Cada dt identifica una dada i cada dd conté el seu valor.
+                                Aquesta estructura facilita la comprensió amb lectors de pantalla.
+                            -->
+                            <dl class="fact-list text-sm text-slate-800">
+                                <div>
+                                    <dt>Naixement</dt>
+                                    <dd>1947</dd>
+                                </div>
+                                <div>
+                                    <dt>Nacionalitat</dt>
+                                    <dd>Països Baixos</dd>
+                                </div>
+                                <div>
+                                    <dt>Equips entrenats</dt>
+                                    <dd>Ajax · FC Barcelona · selecció de Catalunya (partits amistosos)</dd>
+                                </div>
+                                <div>
+                                    <dt>Palmarès destacat</dt>
+                                    <dd>Copa d'Europa 1992 amb el FC Barcelona</dd>
+                                </div>
+                                <div>
+                                    <dt>Total de títols</dt>
+                                    <dd>Pendent de fixar un criteri homogeni (primer equip, categories i supercopes).</dd>
+                                </div>
+                                <div>
+                                    <dt>Rècord / fita</dt>
+                                    <dd>Va conduir el Barça a la seva primera Copa d'Europa i a quatre Lligues consecutives.</dd>
+                                </div>
                             </dl>
-                            <p class="text-sm text-slate-800 leading-relaxed">Entrenador imaginatiu, directe i fidel a les seves idees. Prioritzava la possessió, la creació de triangles i la superioritat numèrica. Donava protagonisme als jugadors tècnics i a l’atac. El seu llegat és central en la identitat futbolística del Barça.</p>
+
+                            <!-- Descripció de la personalitat i l'estil de joc de Cruyff. -->
+                            <p class="text-sm text-slate-800 leading-relaxed">Entrenador imaginatiu, directe i fidel a les seves idees. Prioritzava la possessió, la creació de triangles i la superioritat numèrica. Donava protagonisme als jugadors tècnics i a l'atac. El seu llegat és central en la identitat futbolística del Barça.</p>
                             <p class="text-xs text-slate-600 mt-auto">Fotografia: Dan Uneken · CC0. <a class="underline" href="https://commons.wikimedia.org/wiki/File:Johan_Cruijff_(Cruyff).jpg" target="_blank" rel="noopener noreferrer">Crèdits i llicència (obre una pestanya nova)</a>.</p>
                         </article>
 
@@ -349,20 +529,53 @@
                         <article class="bg-slate-100 border border-slate-200 rounded-xl p-4 min-w-0 flex flex-col gap-3">
                             
                             <!-- Imatge de Guardiola -->
-                            <img class="portrait" src="https://commons.wikimedia.org/wiki/Special:FilePath/PepGuardiola.jpg?width=640" alt="Retrat de Pep Guardiola" loading="lazy" decoding="async" width="320" height="240">
+                            <img 
+                                class="portrait"
+                                src="./assets/images/entrenadors/guardiola.webp"
+                                alt="Josep Guardiola, entrenador llegenda del futbol"
+                                loading="lazy"
+                                decoding="async"
+                                width="320"
+                                height="240"
+                            >
                             
                             <h3 class="text-xl font-bold text-[#123D68]">
                                 Pep Guardiola
                             </h3>
                             
-                            <!-- <dl> associa cada etiqueta amb el seu valor, útil per als lectors de pantalla. -->
-                            <dl class="fact-list text-sm text-slate-800"><div><dt>Naixement</dt><dd>1971</dd></div>
-                                <div><dt>Nacionalitat</dt><dd>Espanya</dd></div>
-                                <div><dt>Equips entrenats</dt><dd>FC Barcelona B · FC Barcelona · Bayern de Munic · Manchester City</dd></div>
-                                <div><dt>Palmarès destacat</dt><dd>Triplet amb el Barça (2009) · triplet amb el Manchester City (2023)</dd></div>
-                                <div><dt>Total de títols</dt><dd>Pendent de fixar un criteri homogeni (primer equip, categories i supercopes).</dd></div>
-                                <div><dt>Rècord / fita</dt><dd>Primer tècnic que va completar dos triplets europeus amb clubs diferents.</dd></div>
+                            <!--
+                                Llista descriptiva de Guardiola.
+                                Cada dt identifica una dada i cada dd conté el seu valor.
+                                Aquesta estructura facilita la comprensió amb lectors de pantalla.
+                            -->
+                            <dl class="fact-list text-sm text-slate-800">
+                                <div>
+                                    <dt>Naixement</dt>
+                                    <dd>1971</dd>
+                                </div>
+                                <div>
+                                    <dt>Nacionalitat</dt>
+                                    <dd>Espanya</dd>
+                                </div>
+                                <div>
+                                    <dt>Equips entrenats</dt>
+                                    <dd>FC Barcelona B · FC Barcelona · Bayern de Munic · Manchester City</dd>
+                                </div>
+                                <div>
+                                    <dt>Palmarès destacat</dt>
+                                    <dd>Triplet amb el Barça (2009) · triplet amb el Manchester City (2023)</dd>
+                                </div>
+                                <div>
+                                    <dt>Total de títols</dt>
+                                    <dd>Pendent de fixar un criteri homogeni (primer equip, categories i supercopes).</dd>
+                                </div>
+                                <div>
+                                    <dt>Rècord / fita</dt>
+                                    <dd>Primer tècnic que va completar dos triplets europeus amb clubs diferents.</dd>
+                                </div>
                             </dl>
+
+                            <!-- Descripció de la personalitat i l'estil de joc de Guardiola. -->
                             <p class="text-sm text-slate-800 leading-relaxed">Metòdic, detallista i molt exigent en el posicionament. Els seus equips busquen controlar la pilota i els espais, pressionar després de la pèrdua i construir des del darrere. Adapta els sistemes sense abandonar la idea de joc col·lectiu i associatiu.</p>
                             <p class="text-xs text-slate-600 mt-auto">Fotografia: Tsutomu Takasu · CC BY 2.0. <a class="underline" href="https://commons.wikimedia.org/wiki/File:PepGuardiola.jpg" target="_blank" rel="noopener noreferrer">Crèdits i llicència (obre una pestanya nova)</a>.</p>
                         </article>
@@ -383,11 +596,16 @@
                     Cinc propostes per conversar sobre la història del futbol. Els debats són demostratius fins que s'implementi el backend.
                 </p>
 
-                <!-- flex-1 i justify-between distribueixen les targetes per aprofitar l'alçada disponible. -->
-                <div class="flex flex-col flex-1 justify-between gap-4"></div>
+                <!--
+                    Contenidor dels cinc debats:
+                    flex: 1 permet aprofitar l'alçada disponible.
+                    flex-col: col·loca les targetes verticalment.
+                    gap-4: manté una separació uniforme de 16 píxels.
+                -->
+                <div class="flex flex-col flex-1 gap-4">
 
                     <!-- Debat 1: contingut de mostra, encara no interactiu. -->
-                    <article class="bg-slate-200 border border-slate-300 rounded-xl p-5 flex-1 flex flex-col justify-center">
+                    <article class="bg-slate-200 border border-slate-300 rounded-xl p-5 flex-1 flex flex-col justify-center gap-2">
                         <h3 class="font-bold text-[#123D68] mb-2">
                             Qui és el millor futbolista de la història?
                         </h3>
@@ -397,7 +615,7 @@
                     </article>
 
                     <!-- Debat 2: contingut de mostra, encara no interactiu. -->
-                    <article class="bg-slate-200 border border-slate-300 rounded-xl p-5 flex-1 flex flex-col justify-center">
+                    <article class="bg-slate-200 border border-slate-300 rounded-xl p-5 flex-1 flex flex-col justify-center gap-2">
                         <h3 class="font-bold text-[#123D68] mb-2">
                             Quin entrenador ha canviat més el futbol?
                         </h3>
@@ -407,7 +625,7 @@
                     </article>
 
                     <!-- Debat 3: contingut de mostra, encara no interactiu. -->
-                    <article class="bg-slate-200 border border-slate-300 rounded-xl p-5 flex-1 flex flex-col justify-center">
+                    <article class="bg-slate-200 border border-slate-300 rounded-xl p-5 flex-1 flex flex-col justify-center gap-2">
                         <h3 class="font-bold text-[#123D68] mb-2">
                             L'onze ideal de tots els temps
                         </h3>
@@ -417,7 +635,7 @@
                     </article>
 
                     <!-- Debat 4: contingut de mostra, encara no interactiu. -->
-                    <article class="bg-slate-200 border border-slate-300 rounded-xl p-5 flex-1 flex flex-col justify-center">
+                    <article class="bg-slate-200 border border-slate-300 rounded-xl p-5 flex-1 flex flex-col justify-center gap-2">
                         <h3 class="font-bold text-[#123D68] mb-2">
                             Què pesa més: els títols o el talent?
                         </h3>
@@ -427,7 +645,7 @@
                     </article>
 
                     <!-- Debat 5: contingut de mostra, encara no interactiu. -->
-                    <article class="bg-slate-200 border border-slate-300 rounded-xl p-5 flex-1 flex flex-col justify-center">
+                    <article class="bg-slate-200 border border-slate-300 rounded-xl p-5 flex-1 flex flex-col justify-center gap-2">
                         <h3 class="font-bold text-[#123D68] mb-2">
                             Com ha evolucionat el futbol?
                         </h3>
