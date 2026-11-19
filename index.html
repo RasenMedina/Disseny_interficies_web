@@ -31,10 +31,20 @@
       .skip-link:focus { position: fixed; left: 1rem; top: 1rem; width: auto; height: auto; overflow: visible; z-index: 1000; padding: .75rem 1rem; background: white; color: #123D68; border: 3px solid #123D68; border-radius: .5rem; }
       :where(a, button, input, select, textarea):focus-visible { outline: 3px solid #F4B942; outline-offset: 3px; }
       .visually-hidden { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+      /* Enllaços interns: la secció de destinació no queda enganxada al límit superior. */
+      [id] { scroll-margin-top: 1.5rem; }
+      /* Les imatges mantenen una retallada uniforme i no deformen els retrats. */
+      .portrait { width: 100%; height: 12rem; object-fit: cover; object-position: center 25%; border-radius: .75rem; }
+      /* La quadrícula de dades usa columnes flexibles i no obliga a fer scroll lateral. */
+      .fact-list { display: grid; grid-template-columns: minmax(0,1fr); gap: .4rem; }
+      .fact-list dt { font-weight: 700; }
+      .fact-list dd { margin: 0 0 .35rem; overflow-wrap: anywhere; }
+      /* El fòrum creix juntament amb la columna esquerra en pantalles grans. */
+      @media (min-width: 1024px) { .forum-column { height: 100%; } }
     </style>
 </head>
 
-<!-- El body amb un color de fons blanc -->
+<!-- El body amb un color de fons gris molt clar -->
 <body class="bg-slate-100">
 
     <!-- Primera opció de teclat: salta directament al contingut main -->
@@ -139,18 +149,24 @@
             </a>
 
             <!-- (TODO: SUBSTITUIR ELS ENLLAÇOS PER LES PÀGINES CORRESPONENTS) -->
-            <a href="#forum" class="hover:underline">
+            <a href="index.html" class="hover:underline">
                 FÒRUM
             </a>
 
-            <a href="#sobre-nosaltres" class="hover:underline">
+             <!-- (TODO: SUBSTITUIR ELS ENLLAÇOS PER LES PÀGINES CORRESPONENTS) -->
+            <a href="index.html" class="hover:underline">
                 SOBRE NOSALTRES
+            </a>
+
+            <!-- (TODO: SUBSTITUIR ELS ENLLAÇOS PER LES PÀGINES CORRESPONENTS) -->
+            <a href="index.html" class="hover:underline">
+                CONTACTE
             </a>
         </div>
   </nav>
 
     <!-- Contingut principal de la vista 'Home' -->
-    <main class="max-w-7xl mx-auto px-4 py-6">
+    <main id="main" tabindex="-1" class="max-w-7xl mx-auto px-4 py-6">
 
         <!--
             Grid principal:
@@ -163,118 +179,192 @@
         <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 items-start">
 
             <!-- Columna esquerra: contingut, jugadors i entrenadors -->
-            <div class="lg:col-span-2 space-y-6">
+            <div class="lg:col-span-2 space-y-6 min-w-0">
 
                 <!-- Secció 1: CONTINGUT DESTACAT -->
-                <section class="bg-white rounded-lg p-6">
+                <section class="bg-white rounded-lg p-6 aria-labelledby="titol-destacat">
 
                     <h1 class="text-2xl font-bold mb-4">
                         CONTINGUT DESTACAT
                     </h1>
 
-                    <p class="text-slate-700">
-                        Descobreix els grans protagonistes de la història del futbol i de l'actualitat.
+                    <!-- Introducció editorial: contingut real en lloc de text provisional. -->
+                    <p class="text-slate-700 leading-relaxed mb-4">
+                        Benvingut a <strong>RAS Football</strong>, un espai per descobrir les persones i les idees que han transformat la història del futbol. Aquí trobaràs perfils de llegendes, entrenadors que van revolucionar el joc i debats per comparar èpoques, estils i grans moments.
                     </p>
+
+                    <p class="text-slate-700 leading-relaxed">
+                        Comença amb tres futbolistes irrepetibles —Pelé, Maradona i Messi— i tres tècnics que han marcat generacions —Michels, Cruyff i Guardiola—. Explora les seves trajectòries, descobreix què els feia especials i comparteix la teva opinió amb la comunitat.
+                    </p>
+
+                    <!-- Destinació temporal de Rànquings; es convertirà en vista pròpia quan es desenvolupi. -->
+                    <div id="ranquings" class="mt-5 rounded-lg border border-slate-200 bg-slate-50 p-4">
+                        <h2 class="font-bold text-lg text-[#123D68]">
+                            Pròximament: rànquings històrics
+                        </h2>
+                        <p class="text-sm text-slate-700">
+                            Comparatives de futbolistes i entrenadors amb criteris transparents i fonts documentades.
+                        </p>
+                    </div>
                 </section>
 
                 <!-- Secció 2: JUGADORS DESTACATS -->
                 <!-- id="jugadors" permet arribar-hi des del menú -->
                 <section id="jugadors" class="bg-white rounded-lg p-6">
 
-                    <h2 class="text-2xl font-bold mb-4">
+                    <h2 id="titol-jugadors" class="text-2xl font-bold mb-4">
                         JUGADORS DESTACATS
                     </h2>
 
-                    <!--
-                        grid: distribució en quadrícula
-                        grid-cols-1: una columna en mòbil
-                        md:grid-cols-3: tres columnes a partir de md
-                        gap-4: separació entre targetes
-                    -->
-                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <!-- Una columna al mòbil, dues en tauleta i tres en pantalles amples. -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
 
-                        <!-- Targeta del jugador 1 -->
-                        <article class="bg-[#879DAA] rounded-xl p-6 text-center">
+                        <!-- Fitxa accessible de Pelé: article, encapçalament propi, retrat i llista de dades. -->
+                        <article class="bg-slate-100 border border-slate-200 rounded-xl p-4 min-w-0 flex flex-col gap-3">
 
-                            <h3 class="font-bold mb-2">
-                                JUGADOR 1
+                            <!-- Imatge de Pele -->
+                            <img class="portrait" src="https://commons.wikimedia.org/wiki/Special:FilePath/Pelé.jpg?width=640" alt="Retrat de Pelé" loading="lazy" decoding="async" width="320" height="240">
+
+                            <h3 class="text-xl font-bold text-[#123D68]">
+                                Pelé
                             </h3>
 
-                            <p class="text-sm">
-                                Fitxa del jugador
-                            </p>
+                           <!-- <dl> associa cada etiqueta amb el seu valor, útil per als lectors de pantalla. -->
+                            <dl class="fact-list text-sm text-slate-800"><div><dt>Naixement</dt><dd>1940</dd></div>
+                                <div><dt>Nacionalitat</dt><dd>Brasil</dd></div>
+                                <div><dt>Clubs</dt><dd>Santos FC · New York Cosmos</dd></div>
+                                <div><dt>Partits, minuts, gols i assistències</dt><dd>Dades pendents d'unificar per competició i font; no es mostren totals no comparables.</dd></div>
+                                <div><dt>Títols individuals i col·lectius</dt><dd>Vegeu el palmarès destacat; recompte total pendent de criteri uniforme.</dd></div>
+                                <div><dt>Palmarès destacat</dt><dd>3 Mundials (1958, 1962 i 1970)</dd></div>
+                                <div><dt>Rècord / fita</dt><dd>La seva marca històrica són tres Copes del Món, fita única entre els futbolistes masculins.</dd></div>
+                            </dl>
+                            <p class="text-sm text-slate-800 leading-relaxed">Velocitat, intuïció i una rematada extraordinària. Combinava joc associatiu amb desequilibri individual, era perillós amb tots dos peus i dominava el joc aeri. La seva creativitat va ajudar a convertir el futbol brasiler en un referent mundial.</p>
+                            <p class="text-xs text-slate-600 mt-auto">Fotografia: Ricardo Stuckert / Agência Brasil · CC BY 3.0 BR. <a class="underline" href="https://commons.wikimedia.org/wiki/File:Pelé.jpg" target="_blank" rel="noopener noreferrer">Crèdits i llicència (obre una pestanya nova)</a>.</p>
                         </article>
 
-                        <!-- Targeta del jugador 2 -->
-                        <article class="bg-[#879DAA] rounded-xl p-6 text-center">
+                        <!-- Fitxa accessible de Diego Maradona: article, encapçalament propi, retrat i llista de dades. -->
+                        <article class="bg-slate-100 border border-slate-200 rounded-xl p-4 min-w-0 flex flex-col gap-3">
 
-                            <h3 class="font-bold mb-2">
-                                JUGADOR 2
+                            <!-- Imatge de Maradona -->
+                            <img class="portrait" src="https://commons.wikimedia.org/wiki/Special:FilePath/DiegoMaradona.jpg?width=640" alt="Retrat de Diego Maradona" loading="lazy" decoding="async" width="320" height="240">
+                            
+                            <h3 class="text-xl font-bold text-[#123D68]">
+                                Diego Maradona
                             </h3>
 
-                            <p class="text-sm">
-                                Fitxa del jugador
-                            </p>
+                            <!-- <dl> associa cada etiqueta amb el seu valor, útil per als lectors de pantalla. -->
+                            <dl class="fact-list text-sm text-slate-800"><div><dt>Naixement</dt><dd>1960</dd></div>
+                                <div><dt>Nacionalitat</dt><dd>Argentina</dd></div>
+                                <div><dt>Clubs</dt><dd>Argentinos Juniors · Boca Juniors · FC Barcelona · Nàpols · Sevilla · Newell's Old Boys</dd></div>
+                                <div><dt>Partits, minuts, gols i assistències</dt><dd>Dades pendents d'unificar per competició i font; no es mostren totals no comparables.</dd></div>
+                                <div><dt>Títols individuals i col·lectius</dt><dd>Vegeu el palmarès destacat; recompte total pendent de criteri uniforme.</dd></div>
+                                <div><dt>Palmarès destacat</dt><dd>Campió del món (1986)</dd></div>
+                                <div><dt>Rècord / fita</dt><dd>Va liderar l'Argentina al Mundial de 1986 i el Nàpols cap a dos títols de lliga italiana.</dd></div>
+                            </dl>
+                            <p class="text-sm text-slate-800 leading-relaxed">Esquerrà de control extraordinari, regat curt i una gran visió de joc. Interpretava els espais amb rapidesa i podia superar diversos rivals en una mateixa jugada. Va destacar per la seva personalitat competitiva i la capacitat d'assumir responsabilitats en partits decisius.</p>
+                            <p class="text-xs text-slate-600 mt-auto">Fotografia: Мысякин Александр · CC BY-SA 3.0. <a class="underline" href="https://commons.wikimedia.org/wiki/File:DiegoMaradona.jpg" target="_blank" rel="noopener noreferrer">Crèdits i llicència (obre una pestanya nova)</a>.</p>
                         </article>
 
-                        <!-- Targeta del jugador 3 -->
-                        <article class="bg-[#879DAA] rounded-xl p-6 text-center">
+                        <!-- Fitxa accessible de Lionel Messi: article, encapçalament propi, retrat i llista de dades. -->
+                        <article class="bg-slate-100 border border-slate-200 rounded-xl p-4 min-w-0 flex flex-col gap-3">
 
-                            <h3 class="font-bold mb-2">
-                                JUGADOR 3
+                            <!-- Imatge de Messi -->
+                            <img class="portrait" src="https://commons.wikimedia.org/wiki/Special:FilePath/Lionel_Messi.jpg?width=640" alt="Retrat de Lionel Messi" loading="lazy" decoding="async" width="320" height="240">
+
+                            <h3 class="text-xl font-bold text-[#123D68]">
+                                Lionel Messi
                             </h3>
 
-                            <p class="text-sm">
-                                Fitxa del jugador
-                            </p>
+                            <!-- <dl> associa cada etiqueta amb el seu valor, útil per als lectors de pantalla. -->
+                             <dl class="fact-list text-sm text-slate-800"><div><dt>Naixement</dt><dd>1987</dd></div>
+                                <div><dt>Nacionalitat</dt><dd>Argentina</dd></div>
+                                <div><dt>Clubs</dt><dd>FC Barcelona · Paris Saint-Germain · Inter Miami</dd></div>
+                                <div><dt>Partits, minuts, gols i assistències</dt><dd>Dades pendents d'unificar per competició i font; no es mostren totals no comparables.</dd></div>
+                                <div><dt>Títols individuals i col·lectius</dt><dd>Vegeu el palmarès destacat; recompte total pendent de criteri uniforme.</dd></div>
+                                <div><dt>Palmarès destacat</dt><dd>Campió del món (2022) · 8 Pilotes d'Or</dd></div>
+                                <div><dt>Rècord / fita</dt><dd>Vuit Pilotes d'Or i una Copa del Món amb l'Argentina.</dd></div>
+                            </dl>
+                            <p class="text-sm text-slate-800 leading-relaxed">Un futbolista amb conducció molt enganxada al peu, canvis de ritme i una lectura excepcional del joc. És golejador i creador d'ocasions alhora. La precisió en la passada, el regat i el xut el converteixen en un dels atacants més complets de la història.</p>
+                            <p class="text-xs text-slate-600 mt-auto">Fotografia: Wonker · CC BY 2.0. <a class="underline" href="https://commons.wikimedia.org/wiki/File:Lionel_Messi.jpg" target="_blank" rel="noopener noreferrer">Crèdits i llicència (obre una pestanya nova)</a>.</p>
                         </article>
                     </div>
                 </section>
 
                 <!-- Secció 3: ENTRENADORS DESTACATS -->
                 <!-- id="entrenadors" permet arribar-hi des del menú -->
-                <section id="entrenadors" class="bg-white rounded-lg p-6">
+                <section id="entrenadors" class="bg-white rounded-lg p-6" aria-labelledby="titol-entrenadors">
 
-                    <h2 class="text-2xl font-bold mb-4">
+                    <h2 id="titol-entrenadors" class="text-2xl font-bold mb-4">
                         ENTRENADORS DESTACATS
                     </h2>
 
-                    <!--
-                        grid: distribució en quadrícula
-                        grid-cols-1: una columna en mòbil
-                        md:grid-cols-3: tres columnes a partir de md
-                        gap-4: separació entre targetes
-                    -->
-                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <!-- Una columna al mòbil, dues en tauleta i tres en pantalles amples. -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
 
-                        <!-- Entrenador 1 -->
-                        <article class="bg-[#879DAA] rounded-xl p-6 text-center">
-                            <h3 class="font-bold mb-2">
-                                ENTRENADOR 1
+                        <!-- Fitxa accessible de Rinus Michels: article, encapçalament propi, retrat i llista de dades. -->
+                        <article class="bg-slate-100 border border-slate-200 rounded-xl p-4 min-w-0 flex flex-col gap-3">
+                            
+                            <!-- Imatge de Rinus Michels -->
+                            <img class="portrait" src="https://commons.wikimedia.org/wiki/Special:FilePath/Rinus_Michels_%281987%29.jpg?width=640" alt="Retrat de Rinus Michels" loading="lazy" decoding="async" width="320" height="240">
+                            
+                            <h3 class="text-xl font-bold text-[#123D68]">
+                                Rinus Michels
                             </h3>
-                            <p class="text-sm">
-                                Fitxa de l'entrenador
-                            </p>
+                            
+                            <!-- <dl> associa cada etiqueta amb el seu valor, útil per als lectors de pantalla. -->
+                            <dl class="fact-list text-sm text-slate-800"><div><dt>Naixement</dt><dd>1947</dd></div>
+                                <div><dt>Nacionalitat</dt><dd>Països Baixos</dd></div>
+                                <div><dt>Equips entrenats</dt><dd>Ajax · FC Barcelona · selecció de Catalunya (partits amistosos)</dd></div>
+                                <div><dt>Palmarès destacat</dt><dd>Copa d’Europa 1992 amb el FC Barcelona</dd></div>
+                                <div><dt>Total de títols</dt><dd>Pendent de fixar un criteri homogeni (primer equip, categories i supercopes).</dd></div>
+                                <div><dt>Rècord / fita</dt><dd>Va conduir el Barça a la seva primera Copa d’Europa i a quatre Lligues consecutives.</dd></div>
+                            </dl>
+                            <p class="text-sm text-slate-800 leading-relaxed">Entrenador imaginatiu, directe i fidel a les seves idees. Prioritzava la possessió, la creació de triangles i la superioritat numèrica. Donava protagonisme als jugadors tècnics i a l’atac. El seu llegat és central en la identitat futbolística del Barça.</p>
+                            <p class="text-xs text-slate-600 mt-auto">Fotografia: Dan Uneken · CC0. <a class="underline" href="https://commons.wikimedia.org/wiki/File:Johan_Cruijff_(Cruyff).jpg" target="_blank" rel="noopener noreferrer">Crèdits i llicència (obre una pestanya nova)</a>.</p>
                         </article>
 
-                        <!-- Entrenador 2 -->
-                        <article class="bg-[#879DAA] rounded-xl p-6 text-center">
-                            <h3 class="font-bold mb-2">
-                                ENTRENADOR 2
+                        <!-- Fitxa accessible de Johan Cruyff: article, encapçalament propi, retrat i llista de dades. -->
+                        <article class="bg-slate-100 border border-slate-200 rounded-xl p-4 min-w-0 flex flex-col gap-3">
+                            
+                            <!-- Imatge de Cruyff -->
+                            <img class="portrait" src="https://commons.wikimedia.org/wiki/Special:FilePath/Johan_Cruijff_%28Cruyff%29.jpg?width=640" alt="Retrat de Johan Cruyff" loading="lazy" decoding="async" width="320" height="240">
+                            
+                            <h3 class="text-xl font-bold text-[#123D68]">
+                                Johan Cruyff
                             </h3>
-                            <p class="text-sm">
-                                Fitxa de l'entrenador
-                            </p>
+
+                            <!-- <dl> associa cada etiqueta amb el seu valor, útil per als lectors de pantalla. -->
+                            <dl class="fact-list text-sm text-slate-800"><div><dt>Naixement</dt><dd>1947</dd></div>
+                                <div><dt>Nacionalitat</dt><dd>Països Baixos</dd></div>
+                                <div><dt>Equips entrenats</dt><dd>Ajax · FC Barcelona · selecció de Catalunya (partits amistosos)</dd></div>
+                                <div><dt>Palmarès destacat</dt><dd>Copa d’Europa 1992 amb el FC Barcelona</dd></div>
+                                <div><dt>Total de títols</dt><dd>Pendent de fixar un criteri homogeni (primer equip, categories i supercopes).</dd></div>
+                                <div><dt>Rècord / fita</dt><dd>Va conduir el Barça a la seva primera Copa d’Europa i a quatre Lligues consecutives.</dd></div>
+                            </dl>
+                            <p class="text-sm text-slate-800 leading-relaxed">Entrenador imaginatiu, directe i fidel a les seves idees. Prioritzava la possessió, la creació de triangles i la superioritat numèrica. Donava protagonisme als jugadors tècnics i a l’atac. El seu llegat és central en la identitat futbolística del Barça.</p>
+                            <p class="text-xs text-slate-600 mt-auto">Fotografia: Dan Uneken · CC0. <a class="underline" href="https://commons.wikimedia.org/wiki/File:Johan_Cruijff_(Cruyff).jpg" target="_blank" rel="noopener noreferrer">Crèdits i llicència (obre una pestanya nova)</a>.</p>
                         </article>
 
-                        <!-- Entrenador 3 -->
-                        <article class="bg-[#879DAA] rounded-xl p-6 text-center">
-                            <h3 class="font-bold mb-2">
-                                ENTRENADOR 3
+                        <!-- Fitxa accessible de Pep Guardiola: article, encapçalament propi, retrat i llista de dades. -->
+                        <article class="bg-slate-100 border border-slate-200 rounded-xl p-4 min-w-0 flex flex-col gap-3">
+                            
+                            <!-- Imatge de Guardiola -->
+                            <img class="portrait" src="https://commons.wikimedia.org/wiki/Special:FilePath/PepGuardiola.jpg?width=640" alt="Retrat de Pep Guardiola" loading="lazy" decoding="async" width="320" height="240">
+                            
+                            <h3 class="text-xl font-bold text-[#123D68]">
+                                Pep Guardiola
                             </h3>
-                            <p class="text-sm">
-                                Fitxa de l'entrenador
-                            </p>
+                            
+                            <!-- <dl> associa cada etiqueta amb el seu valor, útil per als lectors de pantalla. -->
+                            <dl class="fact-list text-sm text-slate-800"><div><dt>Naixement</dt><dd>1971</dd></div>
+                                <div><dt>Nacionalitat</dt><dd>Espanya</dd></div>
+                                <div><dt>Equips entrenats</dt><dd>FC Barcelona B · FC Barcelona · Bayern de Munic · Manchester City</dd></div>
+                                <div><dt>Palmarès destacat</dt><dd>Triplet amb el Barça (2009) · triplet amb el Manchester City (2023)</dd></div>
+                                <div><dt>Total de títols</dt><dd>Pendent de fixar un criteri homogeni (primer equip, categories i supercopes).</dd></div>
+                                <div><dt>Rècord / fita</dt><dd>Primer tècnic que va completar dos triplets europeus amb clubs diferents.</dd></div>
+                            </dl>
+                            <p class="text-sm text-slate-800 leading-relaxed">Metòdic, detallista i molt exigent en el posicionament. Els seus equips busquen controlar la pilota i els espais, pressionar després de la pèrdua i construir des del darrere. Adapta els sistemes sense abandonar la idea de joc col·lectiu i associatiu.</p>
+                            <p class="text-xs text-slate-600 mt-auto">Fotografia: Tsutomu Takasu · CC BY 2.0. <a class="underline" href="https://commons.wikimedia.org/wiki/File:PepGuardiola.jpg" target="_blank" rel="noopener noreferrer">Crèdits i llicència (obre una pestanya nova)</a>.</p>
                         </article>
                     </div>
                 </section>
@@ -282,42 +372,67 @@
 
             <!-- Columna dreta: FÒRUM -->
             <!-- id="forum" permet arribar-hi des del menú -->
-            <aside id="forum" class="bg-white rounded-lg p-6">
+             <!-- Fòrum: la columna creix amb el contingut principal; debats de mostra, sense enllaços ficticis. -->
+            <aside id="forum" class="forum-column bg-white rounded-lg p-6 flex flex-col" aria-labelledby="titol-forum">
 
-                <h2 class="text-2xl font-bold text-center mb-6">
-                    FÒRUM / ACTIVITAT RECENT
+                <h2 id="titol-forum" class="text-2xl font-bold text-center mb-6">
+                    FÒRUM
                 </h2>
 
-                <!-- Llista de debats recents -->
-                <div class="space-y-4">
+                <p class="text-sm text-slate-700 mb-5">
+                    Cinc propostes per conversar sobre la història del futbol. Els debats són demostratius fins que s'implementi el backend.
+                </p>
 
-                    <!-- Debat 1 -->
-                    <article class="bg-[#879DAA] rounded-xl p-6">
-                        <h3 class="font-bold text-center mb-2">
-                            DEBAT 1
+                <!-- flex-1 i justify-between distribueixen les targetes per aprofitar l'alçada disponible. -->
+                <div class="flex flex-col flex-1 justify-between gap-4"></div>
+
+                    <!-- Debat 1: contingut de mostra, encara no interactiu. -->
+                    <article class="bg-slate-200 border border-slate-300 rounded-xl p-5 flex-1 flex flex-col justify-center">
+                        <h3 class="font-bold text-[#123D68] mb-2">
+                            Qui és el millor futbolista de la història?
                         </h3>
-                        <p class="text-sm text-center">
-                            Qui és el millor jugador de la història?
+                        <p class="text-sm text-slate-800">
+                            Com comparem jugadors de generacions diferents sense oblidar el context de cada època?
                         </p>
                     </article>
 
-                    <!-- Debat 2 -->
-                    <article class="bg-[#879DAA] rounded-xl p-6">
-                        <h3 class="font-bold text-center mb-2">
-                            DEBAT 2
+                    <!-- Debat 2: contingut de mostra, encara no interactiu. -->
+                    <article class="bg-slate-200 border border-slate-300 rounded-xl p-5 flex-1 flex flex-col justify-center">
+                        <h3 class="font-bold text-[#123D68] mb-2">
+                            Quin entrenador ha canviat més el futbol?
                         </h3>
-                        <p class="text-sm text-center">
-                            Els millors entrenadors del futbol actual.
+                        <p class="text-sm text-slate-800">
+                            Del futbol total al joc de posició: quina escola ha tingut més influència?
                         </p>
                     </article>
 
-                    <!-- Debat 3 -->
-                    <article class="bg-[#879DAA] rounded-xl p-6">
-                        <h3 class="font-bold text-center mb-2">
-                            DEBAT 3
+                    <!-- Debat 3: contingut de mostra, encara no interactiu. -->
+                    <article class="bg-slate-200 border border-slate-300 rounded-xl p-5 flex-1 flex flex-col justify-center">
+                        <h3 class="font-bold text-[#123D68] mb-2">
+                            L'onze ideal de tots els temps
                         </h3>
-                        <p class="text-sm text-center">
-                            Ultimate Team de la història del futbol.
+                        <p class="text-sm text-slate-800">
+                            Tria un sistema de joc i defensa els teus onze titulars. 
+                        </p>
+                    </article>
+
+                    <!-- Debat 4: contingut de mostra, encara no interactiu. -->
+                    <article class="bg-slate-200 border border-slate-300 rounded-xl p-5 flex-1 flex flex-col justify-center">
+                        <h3 class="font-bold text-[#123D68] mb-2">
+                            Què pesa més: els títols o el talent?
+                        </h3>
+                        <p class="text-sm text-slate-800">
+                            Els trofeus són suficients per valorar una trajectòria individual?
+                        </p>
+                    </article>
+
+                    <!-- Debat 5: contingut de mostra, encara no interactiu. -->
+                    <article class="bg-slate-200 border border-slate-300 rounded-xl p-5 flex-1 flex flex-col justify-center">
+                        <h3 class="font-bold text-[#123D68] mb-2">
+                            Com ha evolucionat el futbol?
+                        </h3>
+                        <p class="text-sm text-slate-800">
+                            Parlem de tàctica, preparació física i tecnologia al llarg de les dècades.
                         </p>
                     </article>
                 </div>
@@ -325,48 +440,53 @@
         </div>
     </main>
 
-  <!-- Peu de pàgina -->
-  <!-- id="sobre-nosaltres" permet arribar-hi des del menú -->
+  <!-- Peu de pàgina: identitat a l'esquerra, mapa de navegació al centre i recursos a la dreta. -->
   <footer id="sobre-nosaltres" class="bg-[#123D68] text-white mt-8">
 
-    <!--
-        max-w-7xl: limita l'amplada del contingut
-        mx-auto: centra el contenidor
-        px-6 py-8: espai interior
-    -->
-    <div class="max-w-7xl mx-auto px-6 py-8">
+    <!-- Contenidor centrat i adaptable: les tres columnes s'apilen al mòbil. -->
+    <div class="max-w-7xl mx-auto px-6 py-10">
 
         <!-- Distribució dels elements del footer -->
-        <div class="flex flex-col md:flex-row justify-between items-center gap-4 text-center">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-sm">
 
-            <!-- Identitat i autoria -->
+            <!-- Identitat, autoria i drets d'autor agrupats al mateix bloc. -->
             <div>
-                <p class="font-bold">RAS Football</p>
-                <p class="text-xs">
+                <p class="font-bold">
+                    RAS Football
+                </p>
+                <p class="mt-1">
                     Projecte personal de Rasen Mediñà i Masdeu
+                </p>
+                <p class="mt-3 text-slate-200">
+                    &copy; 2026 RAS Football. Projecte acadèmic.
                 </p>
             </div>
 
-            <!-- Navegació complementària -->
-            <div class="flex flex-wrap justify-center gap-6 text-sm">
+            <!-- El mapa de navegació complementa el menú principal. -->
+            <nav aria-label="Mapa del lloc" class="md:justify-self-center">
+                <h2 class="font-bold text-base mb-3">Mapa del lloc</h2>
+                <ul class="space-y-2">
+                    <li><a class="underline-offset-4 hover:underline" href="index.html">Inici</a></li>
+                    <li><a class="underline-offset-4 hover:underline" href="#jugadors">Jugadors destacats</a></li>
+                    <li><a class="underline-offset-4 hover:underline" href="#entrenadors">Entrenadors destacats</a></li>
+                    <li><a class="underline-offset-4 hover:underline" href="#ranquings">Rànquings (pròximament)</a></li>
+                    <li><a class="underline-offset-4 hover:underline" href="#forum">Fòrum</a></li>
+                    <li><a class="underline-offset-4 hover:underline" href="#sobre-nosaltres">Sobre nosaltres</a></li>
+                    <li><a class="underline-offset-4 hover:underline" href="contacte.html">Contacte (vista pendent)</a></li>
+                    <li><a class="underline-offset-4 hover:underline" href="login.html">Iniciar sessió / registre</a></li>
+                </ul>
+            </nav>
 
-                <a href="index.html" class="hover:underline">
-                    Inici
-                </a>
-
-                <a href="mailto:r.medina@sapalomera.cat" class="hover:underline">
-                    Contacte
-                </a>
-
-                <a href="#sobre-nosaltres" class="hover:underline">
-                    Sobre nosaltres
-                </a>
+            <!-- Recursos de consulta: millor que perfils socials ficticis. Enllaços amb nom clar. -->
+            <div class="md:justify-self-end">
+                <h2 class="font-bold text-base mb-3">Fonts i futbol</h2>
+                <ul class="space-y-2">
+                    <li><a class="hover:underline" href="https://www.fifa.com/" target="_blank" rel="noopener noreferrer">FIFA (obre una pestanya nova)</a></li>
+                    <li><a class="hover:underline" href="https://www.uefa.com/" target="_blank" rel="noopener noreferrer">UEFA (obre una pestanya nova)</a></li>
+                    <li><a class="hover:underline" href="https://commons.wikimedia.org/" target="_blank" rel="noopener noreferrer">Wikimedia Commons (obre una pestanya nova)</a></li>
+                </ul>
+                <p class="mt-4 text-xs text-slate-200">Les fotografies s'atribueixen a cada fitxa. Les estadístiques no verificades s'indiquen explícitament.</p>
             </div>
-
-            <!-- Copyright -->
-            <p class="text-sm">
-                &copy; 2026 RAS Football
-            </p>
         </div>
     </div>
   </footer>
