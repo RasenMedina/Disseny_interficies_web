@@ -144,24 +144,31 @@
             </a>
 
             <!-- (TODO: SUBSTITUIR ELS ENLLAÇOS PER LES PÀGINES CORRESPONENTS) -->
-            <a href="index.html" class="hover:underline">
+            <!-- Enllaç intern a l'avís dels futurs rànquings. -->
+            <a href="#ranquings" class="hover:underline">
                 RÀNKINGS
             </a>
 
             <!-- (TODO: SUBSTITUIR ELS ENLLAÇOS PER LES PÀGINES CORRESPONENTS) -->
-            <a href="index.html" class="hover:underline">
+            <!-- Enllaç intern a la secció del fòrum. -->
+            <a href="#forum" class="hover:underline">
                 FÒRUM
             </a>
 
              <!-- (TODO: SUBSTITUIR ELS ENLLAÇOS PER LES PÀGINES CORRESPONENTS) -->
-            <a href="index.html" class="hover:underline">
+            <!-- Enllaç intern a la informació del projecte. -->
+            <a href="#sobre-nosaltres" class="hover:underline">
                 SOBRE NOSALTRES
             </a>
 
             <!-- (TODO: SUBSTITUIR ELS ENLLAÇOS PER LES PÀGINES CORRESPONENTS) -->
-            <a href="index.html" class="hover:underline">
+            <!--
+                Apartat pendent d'implementar.
+                No es crea un enllaç trencat a una pàgina inexistent.
+            -->
+            <span class="text-white/70" title="Vista en desenvolupament">
                 CONTACTE
-            </a>
+            </span>
         </div>
   </nav>
 
@@ -179,9 +186,9 @@
             <div class="lg:col-span-2 space-y-6 min-w-0">
 
                 <!-- Secció 1: CONTINGUT DESTACAT -->
-                <section class="bg-white rounded-lg p-6 aria-labelledby="titol-destacat">
+                <section class="bg-white rounded-lg p-6" aria-labelledby="titol-destacat">
 
-                    <h1 class="text-2xl font-bold mb-4">
+                    <h1 id="titol-destacat" class="text-2xl font-bold mb-4">
                         CONTINGUT DESTACAT
                     </h1>
 
@@ -207,7 +214,7 @@
 
                 <!-- Secció 2: JUGADORS DESTACATS -->
                 <!-- id="jugadors" permet arribar-hi des del menú -->
-                <section id="jugadors" class="bg-white rounded-lg p-6">
+                <section id="jugadors" class="bg-white rounded-lg p-6" aria-labelledby="titol-jugadors">
 
                     <h2 id="titol-jugadors" class="text-2xl font-bold mb-4">
                         JUGADORS DESTACATS
@@ -268,7 +275,7 @@
 
                             <!-- Descripció de la personalitat i l'estil de joc de Pelé. -->
                             <p class="text-sm text-slate-800 leading-relaxed">Velocitat, intuïció i una rematada extraordinària. Combinava joc associatiu amb desequilibri individual, era perillós amb tots dos peus i dominava el joc aeri. La seva creativitat va ajudar a convertir el futbol brasiler en un referent mundial.</p>
-                            <p class="text-xs text-slate-600 mt-auto">Fotografia: Ricardo Stuckert / Agência Brasil · CC BY 3.0 BR. <a class="underline" href="https://commons.wikimedia.org/wiki/File:Pelé.jpg" target="_blank" rel="noopener noreferrer">Crèdits i llicència (obre una pestanya nova)</a>.</p>
+                            <p class="text-xs text-slate-600 mt-auto"><a class="underline" href="https://img.odcdn.com.br/wp-content/uploads/2022/12/Pele.webp" target="_blank" rel="noopener noreferrer">Font de la fotografia de Pelé (obre una pestanya nova)</a>.</p>
                         </article>
 
                         <!-- Fitxa accessible de Diego Maradona: article, encapçalament propi, retrat i llista de dades. -->
@@ -327,7 +334,7 @@
 
                             <!-- Descripció de la personalitat i l'estil de joc de Maradona. -->
                             <p class="text-sm text-slate-800 leading-relaxed">Esquerrà de control extraordinari, regat curt i una gran visió de joc. Interpretava els espais amb rapidesa i podia superar diversos rivals en una mateixa jugada. Va destacar per la seva personalitat competitiva i la capacitat d'assumir responsabilitats en partits decisius.</p>
-                            <p class="text-xs text-slate-600 mt-auto">Fotografia: Мысякин Александр · CC BY-SA 3.0. <a class="underline" href="https://commons.wikimedia.org/wiki/File:DiegoMaradona.jpg" target="_blank" rel="noopener noreferrer">Crèdits i llicència (obre una pestanya nova)</a>.</p>
+                            <p class="text-xs text-slate-600 mt-auto"><a class="underline" href="https://wallpaperaccess.com/full/2315123.jpg" target="_blank" rel="noopener noreferrer">Font de la fotografia de Maradona (obre una pestanya nova)</a>.</p>
                         </article>
 
                         <!-- Fitxa accessible de Lionel Messi: article, encapçalament propi, retrat i llista de dades. -->
@@ -386,7 +393,7 @@
 
                             <!-- Descripció de la personalitat i l'estil de joc de Messi. -->
                             <p class="text-sm text-slate-800 leading-relaxed">Un futbolista amb conducció molt enganxada al peu, canvis de ritme i una lectura excepcional del joc. És golejador i creador d'ocasions alhora. La precisió en la passada, el regat i el xut el converteixen en un dels atacants més complets de la història.</p>
-                            <p class="text-xs text-slate-600 mt-auto">Fotografia: Wonker · CC BY 2.0. <a class="underline" href="https://commons.wikimedia.org/wiki/File:Lionel_Messi.jpg" target="_blank" rel="noopener noreferrer">Crèdits i llicència (obre una pestanya nova)</a>.</p>
+                            <p class="text-xs text-slate-600 mt-auto"><a class="underline" href="https://static.standard.co.uk/s3fs-public/thumbnails/image/2019/12/07/20/barcelona-mallorca-071919m.jpg" target="_blank" rel="noopener noreferrer">Font de la fotografia de Messi (obre una pestanya nova)</a>.</p>
                         </article>
                     </div>
                 </section>
@@ -467,7 +474,7 @@
 
                             <!-- Descripció de la personalitat i l'estil de joc de Michels. -->
                             <p class="text-sm text-slate-800 leading-relaxed">Entrenador exigent, disciplinat i amb una gran visió tàctica. Va ser un dels principals impulsors del futbol total, un estil basat en la mobilitat, l'intercanvi de posicions i la pressió col·lectiva. Els seus equips combinaven una preparació física intensa amb una organització tàctica molt avançada. La seva influència va marcar generacions d'entrenadors, especialment Johan Cruyff.</p>
-                            <p class="text-xs text-slate-600 mt-auto">Fotografia: Dan Uneken · CC0. <a class="underline" href="https://commons.wikimedia.org/wiki/File:Johan_Cruijff_(Cruyff).jpg" target="_blank" rel="noopener noreferrer">Crèdits i llicència (obre una pestanya nova)</a>.</p>
+                            <p class="text-xs text-slate-600 mt-auto"><a class="underline" href="https://ilarge.lisimg.com/image/9099567/1081full-rinus-michels.jpg" target="_blank" rel="noopener noreferrer">Font de la fotografia de Rinus Michels (obre una pestanya nova)</a>.</p>
                         </article>
 
                         <!-- Fitxa accessible de Johan Cruyff: article, encapçalament propi, retrat i llista de dades. -->
@@ -522,7 +529,7 @@
 
                             <!-- Descripció de la personalitat i l'estil de joc de Cruyff. -->
                             <p class="text-sm text-slate-800 leading-relaxed">Entrenador imaginatiu, directe i fidel a les seves idees. Prioritzava la possessió, la creació de triangles i la superioritat numèrica. Donava protagonisme als jugadors tècnics i a l'atac. El seu llegat és central en la identitat futbolística del Barça.</p>
-                            <p class="text-xs text-slate-600 mt-auto">Fotografia: Dan Uneken · CC0. <a class="underline" href="https://commons.wikimedia.org/wiki/File:Johan_Cruijff_(Cruyff).jpg" target="_blank" rel="noopener noreferrer">Crèdits i llicència (obre una pestanya nova)</a>.</p>
+                            <p class="text-xs text-slate-600 mt-auto"><a class="underline" href="https://thehimalayantimes.com/uploads/imported_images/wp-content/uploads/2015/10/Spain-Soccer-Cruyff-C_time.jpg" target="_blank" rel="noopener noreferrer">Font de la fotografia de Cruyff (obre una pestanya nova)</a>.</p>
                         </article>
 
                         <!-- Fitxa accessible de Pep Guardiola: article, encapçalament propi, retrat i llista de dades. -->
@@ -577,7 +584,7 @@
 
                             <!-- Descripció de la personalitat i l'estil de joc de Guardiola. -->
                             <p class="text-sm text-slate-800 leading-relaxed">Metòdic, detallista i molt exigent en el posicionament. Els seus equips busquen controlar la pilota i els espais, pressionar després de la pèrdua i construir des del darrere. Adapta els sistemes sense abandonar la idea de joc col·lectiu i associatiu.</p>
-                            <p class="text-xs text-slate-600 mt-auto">Fotografia: Tsutomu Takasu · CC BY 2.0. <a class="underline" href="https://commons.wikimedia.org/wiki/File:PepGuardiola.jpg" target="_blank" rel="noopener noreferrer">Crèdits i llicència (obre una pestanya nova)</a>.</p>
+                            <p class="text-xs text-slate-600 mt-auto"><a class="underline" href="https://cdn1.hammers.news/uploads/25/2025/08/GettyImages-1835924252-scaled.jpg" target="_blank" rel="noopener noreferrer">Font de la fotografia de Guardiola (obre una pestanya nova)</a>.</p>
                         </article>
                     </div>
                 </section>
@@ -664,7 +671,11 @@
     <!-- Contenidor centrat i adaptable: les tres columnes s'apilen al mòbil. -->
     <div class="max-w-7xl mx-auto px-6 py-10">
 
-        <!-- Distribució dels elements del footer -->
+        <!--
+            Footer de tres columnes de la mateixa amplada.
+            En mòbil es mostra una única columna.
+            En pantalles mitjanes i grans, tres columnes uniformes.
+        -->
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-sm">
 
             <!-- Identitat, autoria i drets d'autor agrupats al mateix bloc. -->
@@ -681,22 +692,22 @@
             </div>
 
             <!-- El mapa de navegació complementa el menú principal. -->
-            <nav aria-label="Mapa del lloc" class="md:justify-self-center">
+            <nav aria-label="Mapa del lloc">
                 <h2 class="font-bold text-base mb-3">Mapa del lloc</h2>
                 <ul class="space-y-2">
                     <li><a class="underline-offset-4 hover:underline" href="index.html">Inici</a></li>
                     <li><a class="underline-offset-4 hover:underline" href="#jugadors">Jugadors destacats</a></li>
                     <li><a class="underline-offset-4 hover:underline" href="#entrenadors">Entrenadors destacats</a></li>
-                    <li><a class="underline-offset-4 hover:underline" href="#ranquings">Rànquings (pròximament)</a></li>
+                    <li><a class="underline-offset-4 hover:underline" href="#ranquings">Rànquings</a></li>
                     <li><a class="underline-offset-4 hover:underline" href="#forum">Fòrum</a></li>
                     <li><a class="underline-offset-4 hover:underline" href="#sobre-nosaltres">Sobre nosaltres</a></li>
-                    <li><a class="underline-offset-4 hover:underline" href="contacte.html">Contacte (vista pendent)</a></li>
+                    <li><span class="text-white/70" title="Vista en desenvolupament">Contacte</span></li>
                     <li><a class="underline-offset-4 hover:underline" href="login.html">Iniciar sessió / registre</a></li>
                 </ul>
             </nav>
 
             <!-- Recursos de consulta: millor que perfils socials ficticis. Enllaços amb nom clar. -->
-            <div class="md:justify-self-end">
+            <div>
                 <h2 class="font-bold text-base mb-3">Fonts i futbol</h2>
                 <ul class="space-y-2">
                     <li><a class="hover:underline" href="https://www.fifa.com/" target="_blank" rel="noopener noreferrer">FIFA (obre una pestanya nova)</a></li>
