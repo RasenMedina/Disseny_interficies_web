@@ -1,39 +1,164 @@
-# RAS Football
+# RAS Football ⚽
 
-Projecte de l'assignatura **M09 – Disseny d'interfícies web** de 2n de DAW.
-
+**Projecte de M09 – Disseny d'interfícies web (2n de DAW)**  
 **Autor:** Rasen Mediñà i Masdeu
 
-## Descripció
+## 1. Què és RAS Football?
 
-Web personal sobre futbol, amb informació de jugadors i entrenadors històrics i actuals, rànquings i espais de debat. La idea és ampliar-la més endavant amb articles i opinions.
+RAS Football és una web personal dedicada al futbol, especialment a la seva història. La idea és reunir informació sobre jugadors i entrenadors que han marcat diferents èpoques, i crear més endavant un espai on els aficionats puguin consultar rànquings i participar en debats.
 
-## Disseny i wireframes
+Aquest repositori recull el treball de disseny, maquetació i millora de l'accessibilitat de les primeres vistes. **De moment és un projecte de frontend:** algunes opcions són demostratives i encara no hi ha un backend connectat.
 
-Els wireframes i el prototip s'han fet amb **Figma**. S'han dissenyat dues vistes: **Home** i **Login/Register**.
+## 2. Disseny inicial
 
-- [Wireframe Home](docs/wireframes/home.png)
-- [Wireframe Login/Register](docs/wireframes/login.png)
-- [Projecte a Figma](https://www.figma.com/design/4kpCma7pdHpVRL4srsCxFT/Rasen_projecteFutbol)
+Abans de programar vaig preparar els wireframes i el prototip amb **Figma**. Les dues vistes inicials són:
 
-La paleta combina blau marí, gris clar i blanc, inspirada en la Costa Brava. El logotip és de RAS Football. Els botons principals destaquen en blau viu.
+- **Home:** pàgina principal amb contingut destacat, jugadors, entrenadors i fòrum.
+- **Login / Register:** inici de sessió i registre en una sola pàgina, amb dos formularis separats.
 
-## Desenvolupament
+[Consultar el projecte a Figma](https://www.figma.com/design/4kpCma7pdHpVRL4srsCxFT/Rasen_projecteFutbol)
 
-La web està feta amb **HTML5 i Tailwind CSS v4**, utilitzant **Visual Studio Code**. Per provar-la localment es pot utilitzar XAMPP o Live Server.
+La identitat visual utilitza blau marí (`#123D68`), blanc i grisos clars, amb una inspiració personal en els colors del mar i la Costa Brava. Els botons principals dels formularis són blaus. També he incorporat el logotip de RAS Football al header i com a *favicon*.
 
-- **Home (`index.html`):** capçalera, cercador, menú, contingut destacat, jugadors, entrenadors, fòrum i footer.
-- **Login/Register (`login.html`):** formularis d'inici de sessió i registre en una mateixa vista, amb camps obligatoris i enllaç per tornar a la Home.
-- El menú inclou l'apartat de rànquings, pendent de desenvolupar.
-- El disseny és adaptable: en pantalles petites, el fòrum apareix sota el contingut principal i els formularis es mostren un sota l'altre.
-- El botó d'accés de la Home és gris clar per mantenir la coherència amb el logotip i el cercador.
-- Els formularis són visuals i tenen validacions bàsiques d'HTML; encara no estan connectats al backend.
+## 3. Tecnologies i eines
 
-## Executar el projecte
+- **HTML5:** estructura semàntica, textos, enllaços i formularis.
+- **Tailwind CSS v4:** estils, distribució amb Flexbox i Grid i disseny adaptable.
+- **Visual Studio Code:** edició del projecte.
+- **Figma:** wireframes i prototip.
+- **Git i GitHub:** control de versions i lliurament.
+- **WAVE (WebAIM):** revisió de l'accessibilitat, complementada amb proves manuals.
 
-Instal·lar les dependències amb `npm install` i generar els estils amb `npm run build`, o mantenir-los actualitzats amb `npm run dev`. Obrir `index.html` al navegador.
+No s'ha utilitzat cap framework de JavaScript ni hi ha encara una base de dades connectada.
 
-## Enllaços
+## 4. Vistes implementades
 
-- [Repositori GitHub](https://github.com/RasenMedina/Disseny_interficies_web)
-- [Tailwind CSS](https://tailwindcss.com/)
+### `index.html` — Home
+
+La pàgina principal inclou:
+
+- **Header:** logotip que torna a l'inici, camp de cerca i accés al login.
+- **Menú de navegació:** Inici, Jugadors, Entrenadors, Rànquings, Fòrum, Sobre nosaltres i Contacte.
+- **Contingut destacat:** presentació del projecte i avís dels futurs rànquings històrics.
+- **Jugadors destacats:** fitxes de Pelé, Diego Maradona i Lionel Messi, amb fotografies, trajectòries, palmarès i descripcions del seu joc.
+- **Entrenadors destacats:** fitxes de Rinus Michels, Johan Cruyff i Pep Guardiola, amb informació sobre els equips entrenats, èxits i estil futbolístic.
+- **Fòrum:** cinc propostes de debat sobre jugadors, entrenadors, equips ideals, títols i evolució del futbol. Encara no es poden publicar missatges.
+- **Footer:** tres columnes amb informació i autoria del projecte, mapa del lloc i enllaços a fonts relacionades amb el futbol.
+
+Les fotografies es guarden dins d'`assets/images/` per poder-les gestionar des del projecte. Cal mantenir els crèdits i les condicions de la llicència de cada imatge, encara que el fitxer estigui descarregat localment.
+
+**Sobre les estadístiques:** alguns totals històrics són difícils de comparar perquè depenen de les competicions i les fonts consultades. Per aquest motiu, les dades no verificades o pendents d'unificar s'indiquen en lloc d'inventar xifres.
+
+### `login.html` — Inici de sessió i registre
+
+Aquesta vista conserva el disseny de dos formularis en una mateixa pàgina:
+
+- **Iniciar sessió:** correu electrònic, contrasenya i opció «Recorda'm».
+- **Registre:** nom d'usuari, correu electrònic, contrasenya, confirmació de contrasenya i acceptació dels termes.
+- **Navegació:** enllaç per tornar a la Home i el mateix footer que la pàgina principal.
+
+Els camps utilitzen tipus d'entrada adequats i validacions bàsiques d'HTML, però **encara no es poden iniciar sessions ni crear comptes reals**. La recuperació de contrasenya també està pendent.
+
+## 5. Canvis respecte als wireframes
+
+El prototip inicial servia de guia, però durant la implementació he fet alguns ajustos:
+
+| Element | Canvi realitzat | Motiu |
+| --- | --- | --- |
+| Menú | Afegida l'opció **Contacte** | Preveure una futura vista amb formulari de contacte. |
+| Fòrum | Ampliat de **3 a 5 debats** | Donar més contingut i equilibrar la columna lateral. |
+| Fitxes | Substituïts els exemples genèrics per futbolistes i entrenadors reals, amb imatges i informació | Fer la web més útil i menys semblant a una maqueta. |
+| Contingut destacat | Afegida una introducció i el bloc «Pròximament: rànquings històrics» | Explicar millor el projecte i les funcionalitats futures. |
+| Footer | Reorganitzat en **tres columnes** | Facilitar la navegació i mostrar autoria i fonts. |
+| Header | Ajustats els colors dels elements i incorporat el favicon | Mantenir una identitat visual coherent. |
+| Distribució | Adaptació de columnes i formularis segons la mida de pantalla | Millorar la visualització en mòbils i ordinadors. |
+
+## 6. Millores d'accessibilitat
+
+A l'activitat d'accessibilitat he revisat el codi i he aplicat millores pensades per a la navegació amb teclat i l'ús de lectors de pantalla:
+
+- **Idioma declarat** amb `<html lang="ca">`.
+- **Estructura semàntica** amb `header`, `nav`, `main`, `section`, `article`, `aside` i `footer`, segons el contingut de cada vista.
+- **Jerarquia de títols** (`h1`, `h2`, `h3`) per organitzar la informació.
+- **Enllaç «Salta al contingut principal»** per evitar haver de recórrer tota la capçalera amb el tabulador.
+- **Focus visible** als elements interactius, per saber on es troba la navegació amb teclat.
+- **Textos alternatius** a les imatges informatives i noms accessibles per als elements que ho necessiten.
+- **Formularis amb etiquetes `<label>`** associades als camps mitjançant `for` i `id`, tipus d'entrada adequats, `autocomplete` i camps obligatoris amb `required`.
+- **Enllaços descriptius** i identificació de les pàgines externes que s'obren en una pestanya nova.
+- **Disseny responsive**, perquè el contingut es reorganitzi en pantalles petites sense dependre d'una distribució fixa.
+
+He utilitzat **WAVE** com a eina de suport per detectar possibles problemes, però també és necessari fer comprovacions manuals: recórrer la pàgina amb `Tab` i `Shift+Tab`, comprovar que es veu el focus, revisar el contrast i verificar que els formularis es poden entendre sense dependre només del color. **Passar una eina automàtica no garanteix per si sol que una web sigui completament accessible.**
+
+Recursos consultats:
+
+- [WAVE – Web Accessibility Evaluation Tool](https://wave.webaim.org/)
+- [W3Schools – Accessibility](https://www.w3schools.com/accessibility/)
+- [WCAG – Recomanacions del W3C](https://www.w3.org/WAI/standards-guidelines/wcag/)
+
+## 7. Estructura del projecte
+
+```text
+RAS_Football/
+├── assets/
+│   └── images/
+│       ├── logo.svg
+│       ├── jugadors/
+│       └── entrenadors/
+├── css/
+│   └── output.css          # CSS generat per Tailwind
+├── docs/                    # Documentació i wireframes
+├── src/
+│   └── input.css           # Punt d'entrada de Tailwind
+├── index.html              # Pàgina principal
+├── login.html              # Login i registre
+├── package.json
+├── package-lock.json
+├── .gitignore
+└── README.md
+```
+
+La carpeta `node_modules/` es genera quan s'instal·len les dependències i no cal pujar-la a GitHub.
+
+## 8. Com executar el projecte
+
+1. Descarrega el repositori o clona'l amb Git.
+2. Obre la carpeta del projecte amb Visual Studio Code.
+3. Si necessites regenerar els estils, executa les ordres següents a la terminal:
+
+```bash
+npm install
+npm run build
+```
+
+Per compilar automàticament els canvis mentre treballes:
+
+```bash
+npm run dev
+```
+
+4. Obre `index.html` amb **Live Server** o des d'un servidor local com **XAMPP**. Des de la Home pots accedir a `login.html`.
+
+**Important:** l'adreça `127.0.0.1` només funciona a l'ordinador on s'està executant el servidor. Per revisar el projecte, un company ha de descarregar el repositori i obrir-lo localment.
+
+## 9. Què queda pendent?
+
+Aquest projecte encara està en desenvolupament. Les parts principals pendents són:
+
+- Crear les vistes i funcionalitats de **Rànquings** i **Contacte**.
+- Implementar el **fòrum** perquè es puguin publicar i respondre debats.
+- Fer funcional el **cercador** de jugadors i entrenadors.
+- Connectar els formularis de **login i registre** amb el backend, la base de dades i les validacions del servidor.
+- Desenvolupar la recuperació de contrasenya i els termes i condicions.
+- Completar i verificar més dades estadístiques i continuar fent proves d'accessibilitat.
+
+Per tant, alguns elements del menú poden ser informatius o estar marcats com a pendents. No s'han de considerar funcionalitats acabades.
+
+## 10. Enllaços del projecte
+
+- **GitHub:** [Disseny_interficies_web](https://github.com/RasenMedina/Disseny_interficies_web)
+- **Figma:** [Prototip RAS Football](https://www.figma.com/design/4kpCma7pdHpVRL4srsCxFT/Rasen_projecteFutbol)
+- **Tailwind CSS:** [Documentació oficial](https://tailwindcss.com/)
+
+---
+
+*Projecte acadèmic de 2n de DAW. RAS Football, 2026.*
