@@ -29,8 +29,13 @@
 <!-- El body amb un color de fons blanc -->
 <body class="bg-slate-100">
 
-  <!-- Capçalera principal amb un fons blau fosc personalitzat [#123D68], text en blanc i padding 6 (24px) -->
-  <header class="bg-[#123D68]  text-white p-6">
+<!-- Enllaç per saltar al contingut -->
+<a class="skip-link" href="#main">
+  Salta al contingut principal
+</a>
+
+<!-- Capçalera principal amb un fons blau fosc personalitzat [#123D68], text en blanc i padding 6 (24px) -->
+<header class="bg-[#123D68]  text-white p-6">
     <!-- Flex que distribueix el logotip i el botó als dos extrems (justify-between)-->
     <div class="flex items-center justify-between gap-4">
       
@@ -61,9 +66,9 @@
   </header>
 
 <!-- Contingut principal de la vista 'Login' -->
-<!-- max-w-5xl limita l'amplada, mx-auto centra el contingut -->
+<!-- max-w-7xl limita l'amplada, mx-auto centra el contingut -->
 <!-- px-4 i py-10 afegeixen espai interior -->
-<main class="max-w-5xl mx-auto px-4 py-10">
+<main id="main" class="max-w-7xl mx-auto px-4 py-10">
 
     <!-- Contenidor dels dos formularis -->
     <!-- Fons blanc per destacar sobre el gris clar del body -->
