@@ -24,327 +24,373 @@
 
     <!-- Full d'estils generat per Tailwind CSS -->
     <link rel="stylesheet" href="./css/output.css">
+
+    <!-- Millores d’accessibilitat: drecera de teclat i focus visible -->
+    <style>
+      .skip-link { position: absolute; left: -10000px; top: auto; width: 1px; height: 1px; overflow: hidden; }
+      .skip-link:focus { position: fixed; left: 1rem; top: 1rem; width: auto; height: auto; overflow: visible; z-index: 1000; padding: .75rem 1rem; background: white; color: #123D68; border: 3px solid #123D68; border-radius: .5rem; }
+      :where(a, button, input, select, textarea):focus-visible { outline: 3px solid #F4B942; outline-offset: 3px; }
+      .visually-hidden { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+      /* Enllaços interns: la secció de destinació no queda enganxada al límit superior. */
+      [id] { scroll-margin-top: 1.5rem; }
+      /* Les imatges mantenen una retallada uniforme i no deformen els retrats. */
+      .portrait { width: 100%; height: 12rem; object-fit: cover; object-position: center 25%; border-radius: .75rem; }
+      /* La quadrícula de dades usa columnes flexibles i no obliga a fer scroll lateral. */
+      .fact-list { display: grid; grid-template-columns: minmax(0,1fr); gap: .4rem; }
+      .fact-list dt { font-weight: 700; }
+      .fact-list dd { margin: 0 0 .35rem; overflow-wrap: anywhere; }
+      /* El fòrum creix juntament amb la columna esquerra en pantalles grans. */
+      @media (min-width: 1024px) { .forum-column { height: 100%; } }
+    </style>
 </head>
 
-<!-- El body amb un color de fons blanc -->
+<!-- El body amb un color de fons gris molt clar -->
 <body class="bg-slate-100">
 
-<!-- Enllaç per saltar al contingut -->
-<a class="skip-link" href="#main">
-  Salta al contingut principal
-</a>
+    <!-- Primera opció de teclat: salta directament al contingut main -->
+    <a class="skip-link" href="#main">
+        Salta al contingut principal
+    </a>
 
-<!-- Capçalera principal amb un fons blau fosc personalitzat [#123D68], text en blanc i padding 6 (24px) -->
-<header class="bg-[#123D68]  text-white p-6">
-    <!-- Flex que distribueix el logotip i el botó als dos extrems (justify-between)-->
-    <div class="flex items-center justify-between gap-4">
-      
-      <!-- Logotip de RAS Football que enllaça amb la vista 'Home': afegim espai interior horitzontal i vertical, arrodonim cantonades -->
-      <!-- aria-label proporciona un nom accessible que pot anunciar el lector de pantalla --> 
-      <!-- Posem un fons clar perquè destaqui el logotip, cantonades arrodonides (xl), 16px de pàdding horitzontal (px-4), 8 píxels de padding vertical (py-2) -->
-      <a 
-        href="index.html" 
-        aria-label="RAS Football - Pàgina d'inici"
-        class="bg-slate-100 rounded-xl px-4 py-2">
-            
-        <!-- Imatge del logotip: establim un amplada de 128 píxels (w-32) i calculem automàticament l'alçada (h-auto) -->
-        <img
-            src="./assets/images/logo.svg"
-            alt="Logotip de RAS Football"
-            class="w-32 h-auto"
-        >
-      </a>
+    <!-- Capçalera principal amb un fons blau fosc personalitzat [#123D68], text en blanc i padding 6 (24px) -->
+    <header class="bg-[#123D68]  text-white p-6">
+    
+        <!-- Contenidor que organitza els elements en horitzontal: centrem verticalment, repartim espai entre elements, separació de 6 entre elements -->
+        <!-- En mòbil els elements poden ocupar diverses files (flex-wrap permet que els elements passin a una altra fila quan no hi caben) -->
+        <!-- En pantalles mitjanes o grans mantenim una sola fila -->
+        <div class="flex flex-wrap md:flex-nowrap items-center justify-between gap-6">
+        
+            <!-- Logotip de RAS Football que enllaça amb la vista 'Home': afegim espai interior horitzontal i vertical, arrodonim cantonades -->
+            <!-- aria-label proporciona un nom accessible que pot anunciar el lector de pantalla --> 
+            <!-- Posem un fons clar perquè destaqui el logotip, cantonades arrodonides (xl), 16px de pàdding horitzontal (px-4), 8 píxels de padding vertical (py-2) -->
+            <a 
+                href="index.html" 
+                aria-label="RAS Football - Pàgina d'inici"
+                class="bg-slate-100 rounded-xl px-4 py-2">
+                
+                <!-- Imatge del logotip: establim un amplada de 128 píxels (w-32) i calculem automàticament l'alçada (h-auto) -->
+                <img
+                src="./assets/images/logo.svg"
+                alt="Logotip de RAS Football"
+                class="w-32 h-auto"
+                >
+            </a>
 
-      <!-- Botó que enllaçarà amb la vista de 'Home': el botó s'enfosqueix quan hi passem el ratolí -->
-      <!-- Posem un fons clar, text blau fosc, en negreta, padding horitzontal (px-6), padding vertical (py-3), cantonades arrodonides -->
-    <!-- El símbol de fletxa indica visualment el retorn -->
-      <a href="index.html"
-        class="bg-slate-100 hover:bg-slate-200 text-[#123D68] font-bold px-6 py-3 rounded-full">
-        &larr; TORNAR
-      </a>
-    </div>
+            <!-- Opció de teclat (accessibilitat) -->
+            <label for="cerca-principal" class="visually-hidden">
+                Buscar jugador o entrenador
+            </label>
+
+            <!-- Cercador visual: ocupa l'amplada disponible, fins a un límit -->
+            <!-- aria-label proporciona un nom accessible que pot anunciar el lector de pantalla -->
+            <!-- Posem un fons clar, text blau fosc,  padding horitzontal (px-6), padding vertical (py-3), màxima amplitud, cantonades arrodonides -->
+            <input
+                id="cerca-principal"
+                type="search"
+                placeholder="Buscar jugador o entrenador..."
+                aria-label="Buscar jugador o entrenador"
+                class="bg-slate-100 text-[#123D68] px-6 py-3 w-full max-w-md rounded-full"
+            >
+
+            <!-- Botó que enllaçarà amb la vista de login: el botó s'enfosqueix quan hi passem el ratolí -->
+            <!-- Posem un fons clar, text blau fosc, en negreta, padding horitzontal (px-6), padding vertical (py-3), cantonades arrodonides -->
+            <a href="login.html"
+                class="bg-slate-100 hover:bg-slate-200 text-[#123D68] font-bold px-6 py-3 rounded-full">
+                INICIAR SESSIÓ
+            </a>
+        </div>
   </header>
 
-<!-- Contingut principal de la vista 'Login' -->
-<!-- max-w-7xl limita l'amplada, mx-auto centra el contingut -->
-<!-- px-4 i py-10 afegeixen espai interior -->
-<main id="main" class="max-w-7xl mx-auto px-4 py-10">
+    <!-- Contingut principal de la vista 'Login' -->
+    <!-- max-w-7xl limita l'amplada, mx-auto centra el contingut -->
+    <!-- px-4 i py-10 afegeixen espai interior -->
+    <main id="main" class="max-w-7xl mx-auto px-4 py-10">
 
-    <!-- Contenidor dels dos formularis -->
-    <!-- Fons blanc per destacar sobre el gris clar del body -->
-    <div class="bg-white rounded-lg p-6 md:p-10">
+        <!-- Contenidor dels dos formularis -->
+        <!-- Fons blanc per destacar sobre el gris clar del body -->
+        <div class="bg-white rounded-lg p-6 md:p-10">
 
-        <!-- Grid dels formularis -->
-        <!-- En mòbil: una columna (grid-cols-1)-->
-        <!-- A partir de md: dues columnes (grid-cols-2) -->
-        <!-- gap-10 separa els dos formularis -->
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+            <!-- Grid dels formularis -->
+            <!-- En mòbil: una columna (grid-cols-1)-->
+            <!-- A partir de md: dues columnes (grid-cols-2) -->
+            <!-- gap-10 separa els dos formularis -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
 
-            <!-- FORMULARI 1: INICIAR SESSIÓ -->
-            <section aria-labelledby="titol-login">
+                <!-- FORMULARI 1: INICIAR SESSIÓ -->
+                <section aria-labelledby="titol-login">
 
-                <!-- Títol del formulari -->
-                <h1
-                    id="titol-login"
-                    class="text-2xl font-bold text-[#123D68] text-center mb-8"
-                >
-                    INICIAR SESSIÓ
-                </h1>
-
-                <!-- Formulari d'inici de sessió -->
-                <!-- FORMULARI ENCARA NO FUNCIONAL -->
-                <!-- <form> agrupa els camps d'un formulari -->
-                <!-- space-y-5 separa verticalment els elements fills -->
-                <form action="#" method="post" class="space-y-5">
-
-                    <!-- Camp: correu electrònic -->
-                    <div>
-                        <!-- <label> identifica què ha d'escriure l'usuari -->
-                        <label
-                            for="login-email"
-                            class="block font-bold text-[#123D68] mb-2"
-                        >
-                            Correu electrònic
-                        </label>
-
-                        <!-- <input> permet introduir dades -->
-                        <!-- És obligatori (required) -->
-                        <!-- w-full ocupa tota l'amplada disponible -->
-                        <!-- md:border-l dibuixa la línia vertical en pantalles mitjanes o grans -->
-                        <input
-                            type="email"
-                            id="login-email"
-                            name="email"
-                            autocomplete="email"
-                            required
-                            class="w-full bg-slate-100 rounded-lg px-4 py-3 border border-slate-300"
-                        >
-                    </div>
-
-                    <!-- Camp: contrasenya -->
-                    <div>
-                        <label
-                            for="login-password"
-                            class="block font-bold text-[#123D68] mb-2"
-                        >
-                            Contrasenya
-                        </label>
-
-                        <!-- type="password" oculta els caràcters escrits -->
-                        <input
-                            type="password"
-                            id="login-password"
-                            name="password"
-                            autocomplete="current-password"
-                            required
-                            class="w-full bg-slate-100 rounded-lg px-4 py-3 border border-slate-300"
-                        >
-                    </div>
-
-                    <!-- Casella: recordar-me -->
-                    <!-- Flex situa la casella i el text en horitzontal -->
-                    <div class="flex items-center gap-2">
-                        <input
-                            type="checkbox"
-                            id="recordar"
-                            name="recordar"
-                            class="w-4 h-4"
-                        >
-
-                        <label
-                            for="recordar"
-                            class="text-sm text-[#123D68]"
-                        >
-                            Recorda'm
-                        </label>
-                    </div>
-
-                    <!-- Botó: iniciar sessió -->
-                    <!-- type=submit intenta enviar el formulari -->
-                    <button
-                        type="submit"
-                        class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 rounded-full"
+                    <!-- Títol del formulari -->
+                    <h1
+                        id="titol-login"
+                        class="text-2xl font-bold text-[#123D68] text-center mb-8"
                     >
                         INICIAR SESSIÓ
-                    </button>
+                    </h1>
 
-                    <!-- Enllaç: per recuperar la contrasenya -->
-                    <!-- Pendent de crear la funcionalitat -->
-                    <p class="text-sm text-center text-blue-600">
-                        Has oblidat la contrasenya?
-                    </p>
-                </form>
-            </section>
+                    <!-- Formulari d'inici de sessió -->
+                    <!-- FORMULARI ENCARA NO FUNCIONAL -->
+                    <!-- <form> agrupa els camps d'un formulari -->
+                    <!-- space-y-5 separa verticalment els elements fills -->
+                    <form action="#" method="post" class="space-y-5">
 
-            <!-- FORMULARI 2: REGISTRE -->
-            <!-- border-l afegeix la línia vertical en pantalles md -->
-            <!-- pl-10 separa el contingut de la línia -->
-            <section
-                aria-labelledby="titol-registre"
-                class="md:border-l md:border-slate-300 md:pl-10"
-            >
-                <h2
-                    id="titol-registre"
-                    class="text-2xl font-bold text-[#123D68] text-center mb-8"
+                        <!-- Camp: correu electrònic -->
+                        <div>
+                            <!-- <label> identifica què ha d'escriure l'usuari -->
+                            <label
+                                for="login-email"
+                                class="block font-bold text-[#123D68] mb-2"
+                            >
+                                Correu electrònic
+                            </label>
+
+                            <!-- <input> permet introduir dades -->
+                            <!-- És obligatori (required) -->
+                            <!-- w-full ocupa tota l'amplada disponible -->
+                            <!-- md:border-l dibuixa la línia vertical en pantalles mitjanes o grans -->
+                            <input
+                                type="email"
+                                id="login-email"
+                                name="email"
+                                autocomplete="email"
+                                required
+                                class="w-full bg-slate-100 rounded-lg px-4 py-3 border border-slate-300"
+                            >
+                        </div>
+
+                        <!-- Camp: contrasenya -->
+                        <div>
+                            <label
+                                for="login-password"
+                                class="block font-bold text-[#123D68] mb-2"
+                            >
+                                Contrasenya
+                            </label>
+
+                            <!-- type="password" oculta els caràcters escrits -->
+                            <input
+                                type="password"
+                                id="login-password"
+                                name="password"
+                                autocomplete="current-password"
+                                required
+                                class="w-full bg-slate-100 rounded-lg px-4 py-3 border border-slate-300"
+                            >
+                        </div>
+
+                        <!-- Casella: recordar-me -->
+                        <!-- Flex situa la casella i el text en horitzontal -->
+                        <div class="flex items-center gap-2">
+                            <input
+                                type="checkbox"
+                                id="recordar"
+                                name="recordar"
+                                class="w-4 h-4"
+                            >
+
+                            <label
+                                for="recordar"
+                                class="text-sm text-[#123D68]"
+                            >
+                                Recorda'm
+                            </label>
+                        </div>
+
+                        <!-- Botó: iniciar sessió -->
+                        <!-- type=submit intenta enviar el formulari -->
+                        <button
+                            type="submit"
+                            class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 rounded-full"
+                        >
+                            INICIAR SESSIÓ
+                        </button>
+
+                        <!-- Enllaç: per recuperar la contrasenya -->
+                        <!-- Pendent de crear la funcionalitat -->
+                        <p class="text-sm text-center text-blue-600">
+                            Has oblidat la contrasenya?
+                        </p>
+                    </form>
+                </section>
+
+                <!-- FORMULARI 2: REGISTRE -->
+                <!-- border-l afegeix la línia vertical en pantalles md -->
+                <!-- pl-10 separa el contingut de la línia -->
+                <section
+                    aria-labelledby="titol-registre"
+                    class="md:border-l md:border-slate-300 md:pl-10"
                 >
-                    REGISTRE
-                </h2>
-
-                <!-- Formulari de registre -->
-                <form action="#" method="post" class="space-y-5">
-
-                    <!-- Camp: nom d'usuari -->
-                    <div>
-                        <label
-                            for="registre-usuari"
-                            class="block font-bold text-[#123D68] mb-2"
-                        >
-                            Nom d'usuari
-                        </label>
-
-                        <input
-                            type="text"
-                            id="registre-usuari"
-                            name="usuari"
-                            autocomplete="username"
-                            required
-                            class="w-full bg-slate-100 rounded-lg px-4 py-3 border border-slate-300"
-                        >
-                    </div>
-
-                    <!-- Camp: correu electrònic -->
-                    <div>
-                        <label
-                            for="registre-email"
-                            class="block font-bold text-[#123D68] mb-2"
-                        >
-                            Correu electrònic
-                        </label>
-
-                        <!-- És obligatori (required) -->
-                        <input
-                            type="email"
-                            id="registre-email"
-                            name="email"
-                            autocomplete="email"
-                            required
-                            class="w-full bg-slate-100 rounded-lg px-4 py-3 border border-slate-300"
-                        >
-                    </div>
-
-                    <!-- Camp: contrasenya -->
-                    <div>
-                        <label
-                            for="registre-password"
-                            class="block font-bold text-[#123D68] mb-2"
-                        >
-                            Contrasenya
-                        </label>
-
-                        <input
-                            type="password"
-                            id="registre-password"
-                            name="password"
-                            autocomplete="new-password"
-                            required
-                            class="w-full bg-slate-100 rounded-lg px-4 py-3 border border-slate-300"
-                        >
-                    </div>
-
-                    <!-- Camp: repetir contrasenya -->
-                    <div>
-                        <label
-                            for="registre-confirmar"
-                            class="block font-bold text-[#123D68] mb-2"
-                        >
-                            Repetir contrasenya
-                        </label>
-
-                        <input
-                            type="password"
-                            id="registre-confirmar"
-                            name="confirmar_password"
-                            autocomplete="new-password"
-                            required
-                            class="w-full bg-slate-100 rounded-lg px-4 py-3 border border-slate-300"
-                        >
-                    </div>
-
-                    <!-- Casella: acceptació dels termes i condicions -->
-                    <div class="flex items-center gap-2">
-
-                        <input
-                            type="checkbox"
-                            id="termes"
-                            name="termes"
-                            required
-                            class="w-4 h-4"
-                        >
-
-                        <label
-                            for="termes"
-                            class="text-sm text-[#123D68]"
-                        >
-                            Accepto els termes i condicions
-                        </label>
-                    </div>
-
-                    <!-- Botó: registre -->
-                    <button
-                        type="submit"
-                        class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 rounded-full"
+                    <h2
+                        id="titol-registre"
+                        class="text-2xl font-bold text-[#123D68] text-center mb-8"
                     >
-                        CREAR COMPTE
-                    </button>
-                </form>
-            </section>
-        </div>
-    </div>
-  </main>
+                        REGISTRE
+                    </h2>
 
-  <!-- Peu de pàgina -->
-  <footer id="sobre-nosaltres" class="bg-[#123D68] text-white mt-8">
+                    <!-- Formulari de registre -->
+                    <form action="#" method="post" class="space-y-5">
 
-    <!--
-        max-w-7xl: limita l'amplada del contingut
-        mx-auto: centra el contenidor
-        px-6 py-8: espai interior
-    -->
-    <div class="max-w-7xl mx-auto px-6 py-8">
+                        <!-- Camp: nom d'usuari -->
+                        <div>
+                            <label
+                                for="registre-usuari"
+                                class="block font-bold text-[#123D68] mb-2"
+                            >
+                                Nom d'usuari
+                            </label>
 
-        <!-- Distribució dels elements del footer -->
-        <div class="flex flex-col md:flex-row justify-between items-center gap-4 text-center">
+                            <input
+                                type="text"
+                                id="registre-usuari"
+                                name="usuari"
+                                autocomplete="username"
+                                required
+                                class="w-full bg-slate-100 rounded-lg px-4 py-3 border border-slate-300"
+                            >
+                        </div>
 
-            <!-- Identitat i autoria -->
-            <div>
-                <p class="font-bold">RAS Football</p>
-                <p class="text-xs">
-                    Projecte personal de Rasen Mediñà i Masdeu
-                </p>
+                        <!-- Camp: correu electrònic -->
+                        <div>
+                            <label
+                                for="registre-email"
+                                class="block font-bold text-[#123D68] mb-2"
+                            >
+                                Correu electrònic
+                            </label>
+
+                            <!-- És obligatori (required) -->
+                            <input
+                                type="email"
+                                id="registre-email"
+                                name="email"
+                                autocomplete="email"
+                                required
+                                class="w-full bg-slate-100 rounded-lg px-4 py-3 border border-slate-300"
+                            >
+                        </div>
+
+                        <!-- Camp: contrasenya -->
+                        <div>
+                            <label
+                                for="registre-password"
+                                class="block font-bold text-[#123D68] mb-2"
+                            >
+                                Contrasenya
+                            </label>
+
+                            <input
+                                type="password"
+                                id="registre-password"
+                                name="password"
+                                autocomplete="new-password"
+                                required
+                                class="w-full bg-slate-100 rounded-lg px-4 py-3 border border-slate-300"
+                            >
+                        </div>
+
+                        <!-- Camp: repetir contrasenya -->
+                        <div>
+                            <label
+                                for="registre-confirmar"
+                                class="block font-bold text-[#123D68] mb-2"
+                            >
+                                Repetir contrasenya
+                            </label>
+
+                            <input
+                                type="password"
+                                id="registre-confirmar"
+                                name="confirmar_password"
+                                autocomplete="new-password"
+                                required
+                                class="w-full bg-slate-100 rounded-lg px-4 py-3 border border-slate-300"
+                            >
+                        </div>
+
+                        <!-- Casella: acceptació dels termes i condicions -->
+                        <div class="flex items-center gap-2">
+
+                            <input
+                                type="checkbox"
+                                id="termes"
+                                name="termes"
+                                required
+                                class="w-4 h-4"
+                            >
+
+                            <label
+                                for="termes"
+                                class="text-sm text-[#123D68]"
+                            >
+                                Accepto els termes i condicions
+                            </label>
+                        </div>
+
+                        <!-- Botó: registre -->
+                        <button
+                            type="submit"
+                            class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 rounded-full"
+                        >
+                            CREAR COMPTE
+                        </button>
+                    </form>
+                </section>
             </div>
-
-            <!-- Navegació complementària -->
-            <div class="flex flex-wrap justify-center gap-6 text-sm">
-
-                <a href="index.html" class="hover:underline">
-                    Inici
-                </a>
-
-                <a href="mailto:r.medina@sapalomera.cat" class="hover:underline">
-                    Contacte
-                </a>
-
-                <a href="#sobre-nosaltres" class="hover:underline">
-                    Sobre nosaltres
-                </a>
-            </div>
-
-            <!-- Copyright -->
-            <p class="text-sm">
-                &copy; 2026 RAS Football
-            </p>
         </div>
-    </div>
-  </footer>
+    </main>
+
+    <!-- Peu de pàgina: identitat a l'esquerra, mapa de navegació al centre i recursos a la dreta. -->
+    <footer id="sobre-nosaltres" class="bg-[#123D68] text-white mt-8">
+
+        <!-- Contenidor centrat i adaptable: les tres columnes s'apilen al mòbil. -->
+        <div class="max-w-7xl mx-auto px-6 py-10">
+
+            <!--
+                Footer de tres columnes de la mateixa amplada.
+                En mòbil es mostra una única columna.
+                En pantalles mitjanes i grans, tres columnes uniformes.
+            -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-sm">
+
+                <!-- Identitat, autoria i drets d'autor agrupats al mateix bloc. -->
+                <div>
+                    <p class="font-bold">
+                        RAS Football
+                    </p>
+                    <p class="mt-1">
+                        Projecte personal de Rasen Mediñà i Masdeu
+                    </p>
+                    <p class="mt-3 text-slate-200">
+                        &copy; 2026 RAS Football. Projecte acadèmic.
+                    </p>
+                </div>
+
+                <!-- El mapa de navegació complementa el menú principal. -->
+                <nav aria-label="Mapa del lloc">
+                    <h2 class="font-bold text-base mb-3">Mapa del lloc</h2>
+                    <ul class="space-y-2">
+                        <li><a class="underline-offset-4 hover:underline" href="index.html">Inici</a></li>
+                        <li><a class="underline-offset-4 hover:underline" href="#jugadors">Jugadors destacats</a></li>
+                        <li><a class="underline-offset-4 hover:underline" href="#entrenadors">Entrenadors destacats</a></li>
+                        <li><a class="underline-offset-4 hover:underline" href="#ranquings">Rànquings</a></li>
+                        <li><a class="underline-offset-4 hover:underline" href="#forum">Fòrum</a></li>
+                        <li><a class="underline-offset-4 hover:underline" href="#sobre-nosaltres">Sobre nosaltres</a></li>
+                        <li><span class="text-white/70" title="Vista en desenvolupament">Contacte</span></li>
+                        <li><a class="underline-offset-4 hover:underline" href="login.html">Iniciar sessió / registre</a></li>
+                    </ul>
+                </nav>
+
+                <!-- Recursos de consulta: millor que perfils socials ficticis. Enllaços amb nom clar. -->
+                <div>
+                    <h2 class="font-bold text-base mb-3">Fonts i futbol</h2>
+                    <ul class="space-y-2">
+                        <li><a class="hover:underline" href="https://www.fifa.com/" target="_blank" rel="noopener noreferrer">FIFA (obre una pestanya nova)</a></li>
+                        <li><a class="hover:underline" href="https://www.uefa.com/" target="_blank" rel="noopener noreferrer">UEFA (obre una pestanya nova)</a></li>
+                        <li><a class="hover:underline" href="https://commons.wikimedia.org/" target="_blank" rel="noopener noreferrer">Wikimedia Commons (obre una pestanya nova)</a></li>
+                    </ul>
+                    <p class="mt-4 text-xs text-slate-200">Les fotografies s'atribueixen a cada fitxa. Les estadístiques no verificades s'indiquen explícitament.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
 </body>
 </html>
