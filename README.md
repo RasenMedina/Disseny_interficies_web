@@ -161,4 +161,21 @@ Per tant, alguns elements del menú poden ser informatius o estar marcats com a 
 
 ---
 
+## Millores d'accessibilitat
+
+A partir dels informes d'avaluació realitzats pels companys mitjançant l'extensió Accessibility Insights for Web i la seva eina Assessment, s'han revisat diferents aspectes de l'accessibilitat del projecte RAS Football, seguint els criteris WCAG 2.1 i WCAG 2.2.
+
+### Millores implementades
+
+| Millora | Descripció | Criteri WCAG |
+|---|---|---|
+| Jerarquia d'encapçalaments | Revisió de l'estructura semàntica dels encapçalaments i de la seva jerarquia visual. | 1.3.1 |
+| Validació dels formularis | Comprovació de la coincidència de les contrasenyes del formulari de registre mitjançant JavaScript. | 3.3.3 |
+| Missatges d'error accessibles | Incorporació de missatges d'error textuals i atributs ARIA per facilitar la interpretació dels errors mitjançant tecnologies d'assistència. | 4.1.3 |
+| Semàntica HTML | Ús adequat de les etiquetes `strong` i `em` per transmetre la importància i l'èmfasi dels textos. | 1.3.1 |
+| Mida dels elements interactius | Augment de la mida de les caselles de verificació fins a un mínim de 24 × 24 píxels CSS. | 2.5.8 |
+
+L'objectiu d'aquestes modificacions és aconseguir una interfície més accessible, inclusiva i fàcil d'utilitzar, mantenint la identitat visual i el disseny original del projecte.
+
+
 *Projecte acadèmic de 2n de DAW. RAS Football, 2026.*

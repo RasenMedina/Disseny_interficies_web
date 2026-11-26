@@ -40,14 +40,6 @@
       .visually-hidden { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
       /* Enllaços interns: la secció de destinació no queda enganxada al límit superior. */
       [id] { scroll-margin-top: 1.5rem; }
-      /* Les imatges mantenen una retallada uniforme i no deformen els retrats. */
-      .portrait { width: 100%; height: 12rem; object-fit: cover; object-position: center 25%; border-radius: .75rem; }
-      /* La quadrícula de dades usa columnes flexibles i no obliga a fer scroll lateral. */
-      .fact-list { display: grid; grid-template-columns: minmax(0,1fr); gap: .4rem; }
-      .fact-list dt { font-weight: 700; }
-      .fact-list dd { margin: 0 0 .35rem; overflow-wrap: anywhere; }
-      /* El fòrum creix juntament amb la columna esquerra en pantalles grans. */
-      @media (min-width: 1024px) { .forum-column { height: 100%; } }
     </style>
 </head>
 
