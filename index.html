@@ -69,18 +69,17 @@
         <div class="flex flex-wrap md:flex-nowrap items-center justify-between gap-6">
         
             <!-- Logotip de RAS Football que enllaça amb la vista 'Home': afegim espai interior horitzontal i vertical, arrodonim cantonades -->
-            <!-- aria-label proporciona un nom accessible que pot anunciar el lector de pantalla --> 
+            <!-- el text alternatiu de la imatge proporciona també el nom accessible de l'enllaç, sense necessitat d'afegir un aria-label redundant --> 
             <!-- Posem un fons clar perquè destaqui el logotip, cantonades arrodonides (xl), 16px de pàdding horitzontal (px-4), 8 píxels de padding vertical (py-2) -->
             <a 
                 href="index.html" 
-                aria-label="RAS Football - Pàgina d'inici"
                 class="bg-slate-100 rounded-xl px-4 py-2"
             >
                 
                 <!-- Imatge del logotip: establim un amplada de 128 píxels (w-32) i calculem automàticament l'alçada (h-auto) -->
                 <img
                 src="./assets/images/logo.svg"
-                alt="Logotip de RAS Football"
+                alt="RAS Football - Pàgina d'inici"
                 class="w-32 h-auto"
                 >
             </a>
@@ -182,6 +181,8 @@
 
     <!-- Contingut principal de la vista 'Home' -->
     <main id="main" tabindex="-1" class="max-w-7xl mx-auto px-4 py-6">
+        <!-- Títol principal accessible als lectors de pantalla sense modificar el disseny visual. -->
+        <h1 class="sr-only">RAS Football</h1>
 
         <!--
         En pantalles grans, les dues columnes s'estiren
@@ -196,9 +197,9 @@
                 <!-- Secció 1: CONTINGUT DESTACAT -->
                 <section class="bg-white rounded-lg p-6" aria-labelledby="titol-destacat">
 
-                    <h1 id="titol-destacat" class="text-2xl font-bold mb-4">
+                    <h2 id="titol-destacat" class="text-2xl font-bold mb-4">
                         CONTINGUT DESTACAT
-                    </h1>
+                    </h2>
 
                     <!-- Introducció editorial: contingut real en lloc de text provisional. -->
                     <p class="text-slate-700 leading-relaxed mb-4">
@@ -211,9 +212,10 @@
 
                     <!-- Destinació temporal de Rànquings; es convertirà en vista pròpia quan es desenvolupi. -->
                     <div id="ranquings" class="mt-5 rounded-lg border border-slate-200 bg-slate-50 p-4">
-                        <h2 class="font-bold text-lg text-[#123D68]">
+                        <!-- Subapartat del contingut destacat: nivell 3. -->
+                        <h3 class="font-bold text-lg text-[#123D68]">
                             Pròximament: rànquings històrics
-                        </h2>
+                        </h3>
                         <p class="text-sm text-slate-700">
                             Comparatives de futbolistes i entrenadors amb criteris transparents i fonts documentades.
                         </p>
@@ -688,8 +690,9 @@
 
             <!-- Identitat, autoria i drets d'autor agrupats al mateix bloc. -->
             <div>
-                <p class="font-bold">
-                    RAS Football
+                <!-- Destaquem semànticament el nom del projecte. -->
+                <p>
+                    <strong>RAS Football</strong>
                 </p>
                 <p class="mt-1">
                     Projecte personal de Rasen Mediñà i Masdeu

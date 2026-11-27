@@ -60,18 +60,17 @@
         <div class="flex flex-wrap md:flex-nowrap items-center justify-between gap-6">
         
             <!-- Logotip de RAS Football que enllaça amb la vista 'Home': afegim espai interior horitzontal i vertical, arrodonim cantonades -->
-            <!-- aria-label proporciona un nom accessible que pot anunciar el lector de pantalla --> 
+            <!-- el text alternatiu de la imatge proporciona també el nom accessible de l'enllaç, sense necessitat d'afegir un aria-label redundant --> 
             <!-- Posem un fons clar perquè destaqui el logotip, cantonades arrodonides (xl), 16px de pàdding horitzontal (px-4), 8 píxels de padding vertical (py-2) -->
             <a 
                 href="index.html" 
-                aria-label="RAS Football - Pàgina d'inici"
                 class="bg-slate-100 rounded-xl px-4 py-2"
             >
                 
                 <!-- Imatge del logotip: establim un amplada de 128 píxels (w-32) i calculem automàticament l'alçada (h-auto) -->
                 <img
                 src="./assets/images/logo.svg"
-                alt="Logotip de RAS Football"
+                alt="RAS Football - Pàgina d'inici"
                 class="w-32 h-auto"
                 >
             </a>
@@ -109,6 +108,9 @@
     <!-- px-4 i py-10 afegeixen espai interior -->
     <main id="main" tabindex="-1" class="max-w-7xl mx-auto px-4 py-10">
 
+        <!-- Títol principal que engloba els dos formularis. -->
+        <h1 class="sr-only">Iniciar sessió o registrar-se</h1>
+
         <!-- Contenidor dels dos formularis -->
         <!-- Fons blanc per destacar sobre el gris clar del body -->
         <div class="bg-white rounded-lg p-6 md:p-10">
@@ -120,21 +122,21 @@
             <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
 
                 <!-- FORMULARI 1: INICIAR SESSIÓ -->
-                <section aria-labelledby="titol-login">
-
+                <div>
                     <!-- Títol del formulari -->
-                    <h1
+                    <h2
                         id="titol-login"
                         class="text-2xl font-bold text-[#123D68] text-center mb-8"
                     >
                         INICIAR SESSIÓ
-                    </h1>
+                    </h2>
 
                     <!-- Formulari d'inici de sessió -->
                     <!-- FORMULARI ENCARA NO FUNCIONAL -->
                     <!-- <form> agrupa els camps d'un formulari -->
                     <!-- space-y-5 separa verticalment els elements fills -->
-                    <form action="#" method="post" class="space-y-5">
+                    <!-- Associem el formulari al seu títol perquè els lectors de pantalla n'identifiquin la funció. -->
+                    <form action="#" method="post" class="space-y-5" aria-labelledby="titol-login">
 
                         <!-- Camp: correu electrònic -->
                         <div>
@@ -183,11 +185,12 @@
                         <!-- Casella: recordar-me -->
                         <!-- Flex situa la casella i el text en horitzontal -->
                         <div class="flex items-center gap-2">
+                            <!-- Casella de 24 x 24 píxels per facilitar la interacció. shrink-0 evita que es redueixi quan falta espai. -->
                             <input
                                 type="checkbox"
                                 id="recordar"
                                 name="recordar"
-                                class="w-4 h-4"
+                                class="w-6 h-6 shrink-0"
                             >
 
                             <label
@@ -208,20 +211,20 @@
                         </button>
 
                         <!-- Enllaç: per recuperar la contrasenya -->
-                        <!-- Pendent de crear la funcionalitat -->
-                        <p class="text-sm text-center text-blue-600">
-                            Has oblidat la contrasenya?
+                        <!-- 
+                        Pendent de crear la funcionalitat 
+                        Informem que la recuperació de contrasenya encara no està disponible.
+                        Evitem crear un enllaç que no funciona.
+                        -->
+                        <p class="text-sm text-center text-slate-700">
+                            Recuperació de contrasenya pròximament disponible.
                         </p>
                     </form>
-                </section>
+                </div>
 
                 <!-- FORMULARI 2: REGISTRE -->
-                <!-- border-l afegeix la línia vertical en pantalles md -->
-                <!-- pl-10 separa el contingut de la línia -->
-                <section
-                    aria-labelledby="titol-registre"
-                    class="md:border-l md:border-slate-300 md:pl-10"
-                >
+                <!-- Línia divisòria vertical en pantalles mitjanes i grans. pl-10 separa el formulari de la línia divisòria. -->
+                <div class="md:border-l md:border-slate-300 md:pl-10">
                     <h2
                         id="titol-registre"
                         class="text-2xl font-bold text-[#123D68] text-center mb-8"
@@ -230,7 +233,8 @@
                     </h2>
 
                     <!-- Formulari de registre -->
-                    <form action="#" method="post" class="space-y-5">
+                    <!-- Identifiquem semànticament el formulari de registre -->
+                    <form action="#" method="post" class="space-y-5" aria-labelledby="titol-registre">
 
                         <!-- Camp: nom d'usuari -->
                         <div>
@@ -312,12 +316,13 @@
                         <!-- Casella: acceptació dels termes i condicions -->
                         <div class="flex items-center gap-2">
 
+                            <!-- Casella de 24 x 24 píxels per facilitar la interacció. shrink-0 evita que es redueixi quan falta espai. -->
                             <input
                                 type="checkbox"
                                 id="termes"
                                 name="termes"
                                 required
-                                class="w-4 h-4"
+                                class="w-6 h-6 shrink-0"
                             >
 
                             <label
@@ -336,7 +341,7 @@
                             CREAR COMPTE
                         </button>
                     </form>
-                </section>
+                </div>
             </div>
         </div>
     </main>
@@ -356,8 +361,9 @@
 
                 <!-- Identitat, autoria i drets d'autor agrupats al mateix bloc. -->
                 <div>
-                    <p class="font-bold">
-                        RAS Football
+                    <!-- Destaquem semànticament el nom del projecte. -->
+                    <p>
+                        <strong>RAS Football</strong>
                     </p>
                     <p class="mt-1">
                         Projecte personal de Rasen Mediñà i Masdeu

@@ -165,17 +165,96 @@ Per tant, alguns elements del menú poden ser informatius o estar marcats com a 
 
 A partir dels informes d'avaluació realitzats pels companys mitjançant l'extensió Accessibility Insights for Web i la seva eina Assessment, s'han revisat diferents aspectes de l'accessibilitat del projecte RAS Football, seguint els criteris WCAG 2.1 i WCAG 2.2.
 
-### Millores implementades
+### Millores implementades — primer bloc
 
-| Millora | Descripció | Criteri WCAG |
+| Millora | Descripció | Criteri WCAG relacionat |
 |---|---|---|
-| Jerarquia d'encapçalaments | Revisió de l'estructura semàntica dels encapçalaments i de la seva jerarquia visual. | 1.3.1 |
-| Validació dels formularis | Comprovació de la coincidència de les contrasenyes del formulari de registre mitjançant JavaScript. | 3.3.3 |
-| Missatges d'error accessibles | Incorporació de missatges d'error textuals i atributs ARIA per facilitar la interpretació dels errors mitjançant tecnologies d'assistència. | 4.1.3 |
-| Semàntica HTML | Ús adequat de les etiquetes `strong` i `em` per transmetre la importància i l'èmfasi dels textos. | 1.3.1 |
-| Mida dels elements interactius | Augment de la mida de les caselles de verificació fins a un mínim de 24 × 24 píxels CSS. | 2.5.8 |
+| Nom accessible del logotip | El text alternatiu proporciona el nom de l'enllaç sense un `aria-label` redundant. | 4.1.2 |
+| Text alternatiu del logotip | Identifica el projecte i la destinació de l'enllaç. | 1.1.1, 2.4.4 |
+| Recuperació de contrasenya | Substitució de l'enllaç no funcional per un avís textual. | 2.4.4 (relacionat) |
+| Regions semàntiques | Els formularis tenen un nom accessible associat al seu encapçalament. | 1.3.1 |
+| Jerarquia d'encapçalaments | Un `h1` principal per vista i nivells `h2` i `h3` segons l'estructura del contingut. | 1.3.1, 2.4.6 |
+| Semàntica HTML | Ús de `strong` per transmetre la importància del nom del projecte. | 1.3.1 |
+| Mida dels elements interactius | Augment de les caselles de verificació a 24 × 24 píxels CSS amb la configuració actual de Tailwind. | 2.5.8 (WCAG 2.2) |
 
 L'objectiu d'aquestes modificacions és aconseguir una interfície més accessible, inclusiva i fàcil d'utilitzar, mantenint la identitat visual i el disseny original del projecte.
 
+### Exemples de les modificacions al codi
+
+#### 1 i 2. Nom accessible i text alternatiu del logotip (`index.html` i `login.html`)
+
+```html
+<!-- Logotip corporatiu amb enllaç a la pàgina d'inici. D'aquesta manera, el text alternatiu de la imatge proporciona també el nom accessible de l'enllaç, sense necessitat d'afegir un aria-label redundant. -->
+<a href="index.html"
+   class="bg-slate-100 rounded-xl px-4 py-2">
+    <img src="./assets/images/logo.svg"
+         alt="RAS Football - Pàgina d'inici"
+         class="w-32 h-auto">
+</a>
+```
+
+#### 3. Recuperació de contrasenya (`login.html`)
+
+```html
+<!-- Informem que la recuperació de contrasenya encara no està disponible.
+     Evitem crear un enllaç que no funciona. -->
+<p class="text-sm text-center text-slate-700">
+    Recuperació de contrasenya pròximament disponible.
+</p>
+```
+
+#### 4. Regions semàntiques (`login.html`)
+
+Els contenidors dels formularis són `div` i cada `form` s'associa al seu títol mitjançant `aria-labelledby`.
+
+```html
+<!-- Associem el formulari al seu títol. -->
+<form action="#" method="post" class="space-y-5" aria-labelledby="titol-login">
+    <!-- Camps del formulari -->
+</form>
+```
+
+El formulari de registre utilitza `aria-labelledby="titol-registre"`.
+
+#### 5. Jerarquia d'encapçalaments (amb la correcció final de la Home)
+
+```html
+<!-- Títol principal accessible sense modificar el disseny visual. -->
+<h1 class="sr-only">RAS Football</h1>
+```
+
+A la Home, el contingut destacat és un `h2` i els rànquings històrics són un `h3`. A `login.html`, el títol principal és «Iniciar sessió o registrar-se» i els dos formularis tenen encapçalaments `h2`.
+
+#### 6. Mida de les caselles de verificació (`login.html`)
+
+```html
+<!-- Casella de 24 x 24 píxels per facilitar la interacció.
+     shrink-0 evita que es redueixi quan falta espai. -->
+<input type="checkbox" id="recordar" name="recordar"
+       class="w-6 h-6 shrink-0">
+```
+
+La mateixa mida s'aplica a la casella d'acceptació dels termes.
+
+#### 7. Èmfasi semàntic (`index.html` i `login.html`)
+
+```html
+<!-- Destaquem semànticament el nom del projecte. -->
+<p><strong>RAS Football</strong></p>
+```
+
+Les etiquetes `strong` i `em` serveixen per expressar importància i èmfasi, respectivament; en aquest bloc s'ha incorporat `strong` al footer de les dues vistes.
+
+### Millores pendents — segon bloc
+
+| Millora | Descripció prevista | Criteri WCAG relacionat |
+|---|---|---|
+| Validació dels formularis | Comprovació de la coincidència de les contrasenyes del formulari de registre mitjançant JavaScript. | 3.3.1, 3.3.3 |
+| Missatges d'error accessibles | Incorporació de missatges d'error textuals i atributs ARIA per facilitar la interpretació dels errors mitjançant tecnologies d'assistència. | 3.3.1, 4.1.3 |
+| Mode d'alt contrast | Incorporació d'un mode d'alt contrast i revisió del contrast de textos, vores i cercador. | 1.4.3, 1.4.11 |
+
+### Comprovacions pendents
+
+Cal regenerar el CSS de Tailwind, revisar la distribució dels formularis, comprovar la navegació amb teclat i tornar a executar les eines d'avaluació. Els criteris indicats són referències relacionades amb les modificacions, no una certificació de conformitat WCAG. Els formularis encara no estan connectats al backend.
 
 *Projecte acadèmic de 2n de DAW. RAS Football, 2026.*
