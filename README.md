@@ -259,17 +259,30 @@ S'ha incorporat JavaScript natiu mitjançant el fitxer `src/codi.js`, mantenint 
 
 Aquestes millores treballen els criteris WCAG 3.3.3 (suggeriments d'error) i 4.1.3 (missatges d'estat).
 
-### Millores pendents — segon bloc
+### Millores implementades — segon bloc
 
-| Millora | Descripció prevista | Criteri WCAG relacionat |
+| Millora | Descripció | Criteri WCAG relacionat |
 |---|---|---|
-| Validació dels formularis | Comprovació de la coincidència de les contrasenyes del formulari de registre mitjançant JavaScript. | 3.3.1, 3.3.3 |
-| Missatges d'error accessibles | Incorporació de missatges d'error textuals i atributs ARIA per facilitar la interpretació dels errors mitjançant tecnologies d'assistència. | 3.3.1, 4.1.3 |
-| Mode d'alt contrast | Incorporació d'un mode d'alt contrast i revisió del contrast de textos, vores i cercador. | 1.4.3, 1.4.11 |
+| Cercador accessible | Etiqueta `label` visible associada al camp de cerca i ús de l'element semàntic `search` a les dues vistes. | 1.3.1, 3.3.2 |
+| Vores dels components | Incorporació de vores als camps, contenidors i targetes per facilitar-ne la identificació, també en mode d'alt contrast. | 1.4.11 (relacionat) |
+| Estructura semàntica | Ús de `section` per als rànquings i les fonts de consulta. Es mantenen els `div` destinats a la distribució visual i a l'agrupació de camps i dades. | 1.3.1 |
+| Peu de pàgina | Correcció de la vora superior amb `border-t-2` a les dues vistes. | Millora visual |
+| Validació i missatges accessibles | Incorporació dels mecanismes descrits a l'apartat anterior, amb missatges textuals associats als camps. | 3.3.1, 3.3.3, 4.1.3 |
+
+### Revisió del mode d'alt contrast
+
+He revisat la visualització de la Home amb el tema de contrast Aquàtic de Windows. Els textos, els enllaços i les vores es distingeixen, però el logotip blau fosc perd visibilitat quan el navegador substitueix el fons clar per un de fosc.
+
+Com a millora pendent, es proposa aplicar `@media (forced-colors: active)` i `forced-color-adjust: none` únicament a la imatge del logotip, mantenint-hi un fons clar i respectant els colors del sistema a la resta de la interfície.
+
+També es pot comprovar el mode de colors forçats des del panell Renderizado de Chrome DevTools, seleccionant `forced-colors: active`.
 
 ### Comprovacions pendents
 
-Cal regenerar el CSS de Tailwind, revisar la distribució dels formularis, comprovar la navegació amb teclat i tornar a executar les eines d'avaluació. Els criteris indicats són referències relacionades amb les modificacions, no una certificació de conformitat WCAG. Els formularis encara no estan connectats al backend.
+- Aplicar i comprovar la millora del logotip a les dues vistes amb els temes de contrast de Windows.
+- Revisar la navegació amb teclat, el focus, la distribució responsive i els missatges dels formularis.
+- Regenerar el CSS de Tailwind si s'han modificat les seves classes i tornar a executar WAVE i Accessibility Insights for Web (Assessment).
+
+Els criteris indicats són referències relacionades amb les modificacions, no una certificació de conformitat WCAG. Els formularis encara no estan connectats al backend.
 
 *Projecte acadèmic de 2n de DAW. RAS Football, 2026.*
-

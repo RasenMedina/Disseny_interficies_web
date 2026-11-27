@@ -15,6 +15,8 @@
     --color-slate-100: oklch(96.8% 0.007 247.896);
     --color-slate-200: oklch(92.9% 0.013 255.508);
     --color-slate-300: oklch(86.9% 0.022 252.894);
+    --color-slate-400: oklch(70.4% 0.04 256.788);
+    --color-slate-500: oklch(55.4% 0.046 257.417);
     --color-slate-600: oklch(44.6% 0.043 257.281);
     --color-slate-700: oklch(37.2% 0.044 257.287);
     --color-slate-800: oklch(27.9% 0.041 260.031);
@@ -353,6 +355,22 @@
     border-style: var(--tw-border-style);
     border-width: 1px;
   }
+  .border-2 {
+    border-style: var(--tw-border-style);
+    border-width: 2px;
+  }
+  .border-y {
+    border-block-style: var(--tw-border-style);
+    border-block-width: 1px;
+  }
+  .border-t-2 {
+    border-top-style: var(--tw-border-style);
+    border-top-width: 2px;
+  }
+  .border-b-2 {
+    border-bottom-style: var(--tw-border-style);
+    border-bottom-width: 2px;
+  }
   .border-red-700 {
     border-color: var(--color-red-700);
   }
@@ -361,6 +379,12 @@
   }
   .border-slate-300 {
     border-color: var(--color-slate-300);
+  }
+  .border-slate-400 {
+    border-color: var(--color-slate-400);
+  }
+  .border-slate-500 {
+    border-color: var(--color-slate-500);
   }
   .bg-\[\#123D68\] {
     background-color: #123D68;
@@ -482,6 +506,9 @@
     outline-style: var(--tw-outline-style);
     outline-width: 1px;
   }
+  .placeholder\:text-slate-600::placeholder {
+    color: var(--color-slate-600);
+  }
   @media (hover: hover) {
     .hover\:bg-blue-700:hover {
       background-color: var(--color-blue-700);
@@ -529,6 +556,29 @@
     .xl\:grid-cols-3 {
       grid-template-columns: repeat(3, minmax(0, 1fr));
     }
+  }
+}
+@media (forced-colors: active) {
+  header, footer, body > nav, main section, main aside, main article, main form {
+    border: 1px solid CanvasText;
+  }
+  input:not([type="checkbox"]):not([type="radio"]), button, header a {
+    border: 2px solid ButtonText;
+  }
+  input::placeholder {
+    color: CanvasText;
+    opacity: 1;
+  }
+  a {
+    color: LinkText;
+    text-decoration: underline;
+  }
+  :focus-visible {
+    outline: 3px solid Highlight;
+    outline-offset: 3px;
+  }
+  input[aria-invalid="true"] {
+    border: 3px dashed CanvasText;
   }
 }
 @property --tw-space-y-reverse {

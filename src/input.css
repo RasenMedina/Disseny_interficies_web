@@ -1,2 +1,51 @@
 /* Com que volem utilitzar els estils de Tailwind */
 @import "tailwindcss";
+
+/* ==================================================
+   ACCESSIBILITAT: MODE D'ALT CONTRAST
+   ================================================== */
+
+/* Adaptem la interfície als colors de contrast seleccionats per l'usuari al sistema operatiu. */
+@media (forced-colors: active) {
+
+    /* Delimitem les regions principals de la pàgina. */
+    header,
+    footer,
+    body > nav,
+    main section,
+    main aside,
+    main article,
+    main form {
+        border: 1px solid CanvasText;
+    }
+
+    /* Fem visibles els camps de text i els botons. */
+    input:not([type="checkbox"]):not([type="radio"]),
+    button,
+    header a {
+        border: 2px solid ButtonText;
+    }
+
+    /* Mantenim el text orientatiu dels camps llegible. */
+    input::placeholder {
+        color: CanvasText;
+        opacity: 1;
+    }
+
+    /* Diferenciem els enllaços del text convencional. */
+    a {
+        color: LinkText;
+        text-decoration: underline;
+    }
+
+    /* Garantim un indicador de focus visible durant la navegació amb teclat. */
+    :focus-visible {
+        outline: 3px solid Highlight;
+        outline-offset: 3px;
+    }
+
+    /* Destaquem els camps que contenen errors. */
+    input[aria-invalid="true"] {
+        border: 3px dashed CanvasText;
+    }
+}
