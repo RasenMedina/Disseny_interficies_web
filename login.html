@@ -32,6 +32,12 @@
     <!-- Full d'estils generat per Tailwind CSS -->
     <link rel="stylesheet" href="./css/output.css">
 
+    <!-- 
+        Fitxer JavaScript extern per validar els formularis.
+        defer permet executar el codi quan el document HTMLja s'ha carregat i els seus elements estan disponibles.
+    -->
+    <script src="./src/codi.js" defer></script>
+
     <!-- Millores d’accessibilitat: drecera de teclat i focus visible -->
     <style>
       .skip-link { position: absolute; left: -10000px; top: auto; width: 1px; height: 1px; overflow: hidden; }
@@ -234,7 +240,7 @@
 
                     <!-- Formulari de registre -->
                     <!-- Identifiquem semànticament el formulari de registre -->
-                    <form action="#" method="post" class="space-y-5" aria-labelledby="titol-registre">
+                    <form id="formulari-registre" action="#" method="post" class="space-y-5" aria-labelledby="titol-registre">
 
                         <!-- Camp: nom d'usuari -->
                         <div>
@@ -303,14 +309,23 @@
                                 Repetir contrasenya *
                             </label>
 
+                            <!-- Associem el camp amb el seu missatge d'error accessible -->
                             <input
                                 type="password"
                                 id="registre-confirmar"
                                 name="confirmar_password"
                                 autocomplete="new-password"
+                                aria-describedby="error-contrasenya"
                                 required
                                 class="w-full bg-slate-100 rounded-lg px-4 py-3 border border-slate-300"
                             >
+
+                            <!-- El lector de pantalla anuncia els errors quan apareixen. -->
+                            <p 
+                                id="error-contrasenya"
+                                role="alert"
+                                class="text-sm text-red-700 mt-2">
+                            </p>
                         </div>
 
                         <!-- Casella: acceptació dels termes i condicions -->
@@ -340,6 +355,13 @@
                         >
                             CREAR COMPTE
                         </button>
+                        
+                        <!-- Missatge accessible sobre el resultat de la validació. -->
+                        <p 
+                            id="estat-registre"
+                            role="status"
+                            class="text-sm text-center text-[#123D68]">
+                        </p>
                     </form>
                 </div>
             </div>

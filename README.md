@@ -108,7 +108,8 @@ RAS_Football/
 │   └── output.css          # CSS generat per Tailwind
 ├── docs/                    # Documentació i wireframes
 ├── src/
-│   └── input.css           # Punt d'entrada de Tailwind
+│   ├── input.css           # Punt d'entrada de Tailwind
+│   └── codi.js             # Validació accessible dels formularis
 ├── index.html              # Pàgina principal
 ├── login.html              # Login i registre
 ├── package.json
@@ -245,6 +246,19 @@ La mateixa mida s'aplica a la casella d'acceptació dels termes.
 
 Les etiquetes `strong` i `em` serveixen per expressar importància i èmfasi, respectivament; en aquest bloc s'ha incorporat `strong` al footer de les dues vistes.
 
+### 8. Validació de contrasenyes i missatges accessibles
+
+S'ha incorporat JavaScript natiu mitjançant el fitxer `src/codi.js`, mantenint el codi JavaScript separat de l'HTML.
+
+- Validació de la coincidència de les contrasenyes del formulari de registre.
+- Missatges d'error textuals que indiquen el problema i com corregir-lo.
+- Ús de `aria-describedby`, `aria-invalid`, `role="alert"` i `role="status"` per facilitar l'accessibilitat amb lectors de pantalla.
+- Desplaçament del focus al camp de confirmació quan les contrasenyes no coincideixen.
+- Eliminació dels missatges d'error quan l'usuari modifica les contrasenyes.
+- Prevenció de l'enviament del formulari mitjançant `event.preventDefault()`, ja que encara no disposem d'un backend.
+
+Aquestes millores treballen els criteris WCAG 3.3.3 (suggeriments d'error) i 4.1.3 (missatges d'estat).
+
 ### Millores pendents — segon bloc
 
 | Millora | Descripció prevista | Criteri WCAG relacionat |
@@ -258,3 +272,4 @@ Les etiquetes `strong` i `em` serveixen per expressar importància i èmfasi, re
 Cal regenerar el CSS de Tailwind, revisar la distribució dels formularis, comprovar la navegació amb teclat i tornar a executar les eines d'avaluació. Els criteris indicats són referències relacionades amb les modificacions, no una certificació de conformitat WCAG. Els formularis encara no estan connectats al backend.
 
 *Projecte acadèmic de 2n de DAW. RAS Football, 2026.*
+
